@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Acerca",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Soluciones Tecnológicas Innovadoras",
+    "subtitle": "Empoderando empresas con desarrollo de software, infraestructura y servicios de consultoría de vanguardia",
+    "cta": "Comenzar",
+    "learnMore": "Saber Más"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones tecnológicas integrales adaptadas a las necesidades de su negocio",
+    "development": {
+      "title": "Desarrollo de Software",
+      "description": "Aplicaciones personalizadas, plataformas web y soluciones móviles construidas con tecnologías modernas"
+    },
+    "infrastructure": {
+      "title": "Infraestructura y DevOps",
+      "description": "Arquitectura en la nube, automatización y soluciones de infraestructura escalables"
+    },
+    "consulting": {
+      "title": "Consultoría Tecnológica",
+      "description": "Orientación estratégica y asesoramiento experto para impulsar su transformación digital"
+    },
+    "support": {
+      "title": "Soporte y Mantenimiento",
+      "description": "Soporte continuo y mantenimiento para mantener sus sistemas funcionando sin problemas"
+    }
+  },
+  "about": {
+    "title": "Acerca de Innexar",
+    "subtitle": "Liderando el camino en soluciones tecnológicas innovadoras",
+    "description": "Somos un equipo de expertos en tecnología apasionados, dedicados a entregar resultados excepcionales para nuestros clientes. Con años de experiencia en desarrollo de software, infraestructura y consultoría, ayudamos a las empresas a transformarse y crecer en la era digital."
+  },
+  "contact": {
+    "title": "Ponerse en Contacto",
+    "subtitle": "¿Listo para comenzar su próximo proyecto?",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "company": "Empresa",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Innexar. Todos los derechos reservados.",
+    "description": "Soluciones tecnológicas innovadoras para empresas modernas"
+  }
+}

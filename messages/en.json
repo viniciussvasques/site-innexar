@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Innovative Technology Solutions",
+    "subtitle": "Empowering businesses with cutting-edge software development, infrastructure, and consulting services",
+    "cta": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive technology solutions tailored to your business needs",
+    "development": {
+      "title": "Software Development",
+      "description": "Custom applications, web platforms, and mobile solutions built with modern technologies"
+    },
+    "infrastructure": {
+      "title": "Infrastructure & DevOps",
+      "description": "Cloud architecture, automation, and scalable infrastructure solutions"
+    },
+    "consulting": {
+      "title": "Technology Consulting",
+      "description": "Strategic guidance and expert advice to drive your digital transformation"
+    },
+    "support": {
+      "title": "Support & Maintenance",
+      "description": "Ongoing support and maintenance to keep your systems running smoothly"
+    }
+  },
+  "about": {
+    "title": "About Innexar",
+    "subtitle": "Leading the way in innovative technology solutions",
+    "description": "We are a team of passionate technology experts dedicated to delivering exceptional results for our clients. With years of experience in software development, infrastructure, and consulting, we help businesses transform and grow in the digital age."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Ready to start your next project?",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Innexar. All rights reserved.",
+    "description": "Innovative technology solutions for modern businesses"
+  }
+}
