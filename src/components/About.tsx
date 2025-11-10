@@ -8,12 +8,12 @@ const About = () => {
   const t = useTranslations('about')
 
   const features = [
-    'Expert Team',
-    'Proven Track Record',
-    'Cutting-edge Technology',
-    'Customer-focused Approach',
-    '24/7 Support',
-    'Scalable Solutions'
+    t('features.expertTeam'),
+    t('features.provenTrack'),
+    t('features.cuttingEdge'),
+    t('features.customerFocus'),
+    t('features.support247'),
+    t('features.scalable')
   ]
 
   return (
@@ -63,7 +63,7 @@ const About = () => {
               viewport={{ once: true }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
-              Learn More About Us
+              {t('learnMoreBtn')}
             </motion.button>
           </motion.div>
 
@@ -78,16 +78,16 @@ const About = () => {
             <div className="bg-linear-to-br from-blue-100 to-cyan-100 rounded-2xl p-8 h-96 flex items-center justify-center">
               <div className="text-center">
                 <div className="text-6xl font-bold text-blue-600 mb-4">5+</div>
-                <div className="text-xl text-gray-700 mb-6">Years of Excellence</div>
+                <div className="text-xl text-gray-700 mb-6">{t('stats.yearsTitle')}</div>
                 
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
                     <div className="text-2xl font-bold text-cyan-600">50+</div>
-                    <div className="text-sm text-gray-600">Projects Delivered</div>
+                    <div className="text-sm text-gray-600">{t('stats.projectsTitle')}</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-indigo-600">100%</div>
-                    <div className="text-sm text-gray-600">Client Satisfaction</div>
+                    <div className="text-sm text-gray-600">{t('stats.satisfactionTitle')}</div>
                   </div>
                 </div>
               </div>

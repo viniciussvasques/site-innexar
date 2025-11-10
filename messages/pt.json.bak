@@ -12,146 +12,18 @@
     "title": "Innexar SaaS - Gestão Empresarial (ERP)",
     "subtitle": "Plataforma ERP SaaS rebrandable e multi-tenant para pequenas e médias empresas",
     "overviewTitle": "Visão Geral",
-    "overviewDescription": "Plataforma 100% web, multiempresa e multiusuário, com subdomínios exclusivos por cliente e provisionamento automático. A solução é rebrandable e modular, oferecendo escalabilidade e personalização.",
+    "overview": "Plataforma 100% web, multiempresa e multiusuário, com subdomínios exclusivos por cliente e provisionamento automático. A solução é rebrandable e modular, oferecendo escalabilidade e personalização.",
     "objectiveTitle": "Objetivo do Sistema",
     "objective": "Oferecer uma suíte integrada de gestão (comercial, administrativa e operacional), contratação de planos online, criação automática de instâncias/subdomínios e módulos ativáveis por plano.",
     "techTitle": "Estrutura Técnica",
     "tech": "Backend em Python, PostgreSQL, frontend em JavaScript moderno, deploy containerizado (Docker/Kubernetes), wildcard DNS para subdomínios e integração com gateways de pagamento (Stripe, PayPal).",
-    "featuresTitle": "Recursos de Nível Empresarial",
-    "featuresSubtitle": "Construída com escalabilidade e segurança em mente, nossa plataforma fornece tudo o que você precisa para executar um negócio SaaS de sucesso.",
-    "feature1": {
-      "title": "Arquitetura Multi-Tenant",
-      "description": "Ambientes seguros e isolados para cada cliente com infraestrutura compartilhada para eficiência de custos ideal."
-    },
-    "feature2": {
-      "title": "Provisionamento Automático",
-      "description": "Criação instantânea de subdomínio, configuração de banco de dados e provisionamento de contas de usuário na assinatura."
-    },
-    "feature3": {
-      "title": "Segurança Empresarial",
-      "description": "Criptografia SSL, controle de acesso baseado em funções, logs de auditoria e conformidade com padrões da indústria."
-    },
-    "feature4": {
-      "title": "Análises Avançadas",
-      "description": "Inteligência de negócios em tempo real, dashboards personalizados e relatórios abrangentes em todos os módulos."
-    },
-    "feature5": {
-      "title": "Gestão de Usuários",
-      "description": "Sistema de permissões granulares, ferramentas de colaboração em equipe e fluxos de integração de usuários perfeitos."
-    },
-    "feature6": {
-      "title": "Pronto para White-Label",
-      "description": "Personalização completa de marca, domínio e interface de usuário para corresponder à identidade da sua empresa."
-    },
-    "hero": {
-      "badge": "Plataforma SaaS Pronta para Empresas",
-      "watchDemo": "Assistir Demo",
-      "clientDashboard": "Painel do Cliente",
-      "benefits": [
-        "Plataforma Multi-tenant 100% Web",
-        "Provisionamento Automático de Subdomínios",
-        "Rebranding White-label Completo",
-        "Ativação de Módulos Escalável"
-      ]
-    },
-    "pricing": {
-      "title": "Preços Simples e Transparentes",
-      "subtitle": "Escolha o plano perfeito para as necessidades do seu negócio",
-      "monthly": "Mensal",
-      "yearly": "Anual",
-      "save20": "Economize 20%",
-      "perMonth": "/mês",
-      "selectPlan": "Selecionar Plano",
-      "starter": {
-        "name": "Inicial",
-        "price": "R$ 249",
-        "description": "Perfeito para pequenas empresas começando",
-        "features": [
-          "Até 5 usuários",
-          "Gestão básica de estoque",
-          "Vendas e faturamento",
-          "Suporte por email",
-          "1 GB armazenamento"
-        ]
-      },
-      "professional": {
-        "name": "Profissional",
-        "price": "R$ 499",
-        "description": "Ideal para empresas em crescimento com necessidades avançadas",
-        "popular": "Mais Popular",
-        "features": [
-          "Até 25 usuários",
-          "Estoque avançado e CRM",
-          "Gestão financeira",
-          "Suporte prioritário",
-          "10 GB armazenamento",
-          "Relatórios personalizados"
-        ]
-      },
-      "enterprise": {
-        "name": "Empresarial",
-        "price": "R$ 999",
-        "description": "Solução completa para grandes organizações",
-        "features": [
-          "Usuários ilimitados",
-          "Todos os módulos incluídos",
-          "Suporte dedicado",
-          "Armazenamento ilimitado",
-          "Acesso à API",
-          "Integrações personalizadas",
-          "Opções white-label"
-        ]
-      }
-    },
-    "overview": {
-      "title": "Visão Geral da Plataforma",
-      "subtitle": "Uma solução SaaS abrangente projetada para escalabilidade e personalização",
-      "stats": {
-        "clients": "Clientes Ativos",
-        "uptime": "Uptime",
-        "transactions": "Transações/Mês",
-        "support": "Resposta Suporte"
-      },
-      "architecture": {
-        "title": "Arquitetura Técnica",
-        "frontend": "Frontend Moderno",
-        "frontendDesc": "React, TypeScript, Tailwind CSS",
-        "backend": "Backend Escalável",
-        "backendDesc": "Python, FastAPI, PostgreSQL",
-        "infrastructure": "Infraestrutura em Nuvem",
-        "infrastructureDesc": "Docker, Kubernetes, AWS",
-        "security": "Segurança Empresarial",
-        "securityDesc": "SSL, OAuth2, Criptografia de Dados"
-      }
-    },
-    "testimonials": {
-      "title": "O Que Nossos Clientes Dizem",
-      "subtitle": "Junte-se a centenas de empresas satisfeitas usando nossa plataforma",
-      "client1": {
-        "quote": "Esta plataforma transformou como gerenciamos nosso negócio. Só os recursos de automação nos pouparam inúmeras horas.",
-        "author": "João Silva",
-        "company": "Tech Solutions Inc",
-        "role": "CEO"
-      },
-      "client2": {
-        "quote": "Excelente suporte e recursos em constante melhoria. Melhor investimento que fizemos para nossas operações.",
-        "author": "Maria Garcia",
-        "company": "Global Logistics",
-        "role": "Diretora de Operações"
-      },
-      "client3": {
-        "quote": "As capacidades white-label nos permitiram oferecer isso como nossa própria solução. Mudança de jogo para nosso modelo de negócio.",
-        "author": "David Chen",
-        "company": "StartupHub",
-        "role": "Fundador"
-      },
-      "trustBadges": {
-        "certified": "Certificado ISO 27001",
-        "gdpr": "Conformidade GDPR",
-        "support": "Suporte 24/7",
-        "uptime": "SLA 99.9%"
-      }
-    },
+    "featuresTitle": "Funcionalidades Principais",
+    "feature1": "Gestão de estoque e produtos",
+    "feature2": "Vendas e orçamentos", 
+    "feature3": "Clientes e CRM",
+    "feature4": "Faturamento e financeiro",
+    "feature5": "Automação de provisionamento e onboarding",
+    "feature6": "Rebranding total e personalização",
     "plansTitle": "Planos e Modularidade",
     "cta": "Solicitar Demonstração"
   },
@@ -169,12 +41,12 @@
       "subtitle": "Entregamos soluções inovadoras que impulsionam inovação, eficiência e crescimento em todos os setores",
       "cta": "Iniciar Seu Projeto",
       "consultation": "Consultoria Gratuita",
-      "stats": {
-        "projectsDelivered": "Projetos Entregues",
-        "yearsExperience": "Anos de Experiência",
-        "happyClients": "Clientes Satisfeitos",
-        "support": "Suporte"
-      }
+      "stats": [
+        { "number": "500+", "label": "Projetos Entregues" },
+        { "number": "98%", "label": "Satisfação do Cliente" },
+        { "number": "24/7", "label": "Suporte Disponível" },
+        { "number": "15+", "label": "Anos de Experiência" }
+      ]
     },
     "process": {
       "title": "Nosso Processo Comprovado",
@@ -196,12 +68,7 @@
           "title": "Implantação e Suporte",
           "description": "Implantação perfeita em produção com monitoramento, manutenção e suporte contínuos."
         }
-      ],
-      "cta": {
-        "title": "Pronto para iniciar seu projeto?",
-        "description": "Nosso processo comprovado garante a entrega bem-sucedida de suas soluções tecnológicas. Vamos começar com uma consultoria gratuita para entender suas necessidades.",
-        "button": "Agendar Consultoria Gratuita"
-      }
+      ]
     },
     "whyChooseUs": {
       "title": "Por Que Escolher a Innexar?",
@@ -329,6 +196,28 @@
         "Atualizações de segurança"
       ],
       "technologies": ["Ferramentas de Monitoramento", "ITSM", "Automação", "Patches de Segurança", "Otimização de Performance", "Soluções de Backup"]
+    },
+    "process": {
+      "title": "Nosso Processo",
+      "subtitle": "Uma metodologia comprovada que entrega resultados",
+      "steps": [
+        {
+          "title": "Descoberta",
+          "description": "Analisamos seus requisitos e desafios"
+        },
+        {
+          "title": "Estratégia",
+          "description": "Desenvolvemos uma estratégia de solução personalizada"
+        },
+        {
+          "title": "Desenvolvimento",
+          "description": "Construímos e implementamos a solução"
+        },
+        {
+          "title": "Entrega",
+          "description": "Implantamos e fornecemos suporte contínuo"
+        }
+      ]
     },
     "whyChoose": {
       "title": "Por Que Escolher a Innexar?",

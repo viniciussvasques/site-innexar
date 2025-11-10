@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# docker
+.docker/
+
+# deploy
+*.log
+*.pid
+*.seed
+*.pid.lock

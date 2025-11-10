@@ -14,10 +14,29 @@ const Contact = () => {
     message: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const FORM_ENDPOINT = process.env.FORM_ENDPOINT || ''
+  const EMAIL_TO = process.env.EMAIL_TO || ''
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    // Envia para endpoint externo (ex: Formspree, Resend, etc)
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...formData, to: EMAIL_TO })
+      })
+      if (res.ok) {
+        alert('Mensagem enviada com sucesso!')
+        setFormData({ name: '', email: '', company: '', message: '' })
+      } else {
+        alert('Erro ao enviar. Tente novamente.')
+      }
+    } catch (err) {
+      alert('Erro de conexão. Tente novamente.')
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -60,8 +79,8 @@ const Contact = () => {
                 <EnvelopeIcon className="h-6 w-6 text-blue-600 mt-1" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                <p className="text-gray-600">contact@innexar.com</p>
+                <h3 className="text-lg font-semibold text-gray-900">{t('info.email')}</h3>
+                <p className="text-gray-600">{EMAIL_TO}</p>
               </div>
             </div>
 
@@ -70,7 +89,7 @@ const Contact = () => {
                 <PhoneIcon className="h-6 w-6 text-blue-600 mt-1" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
+                <h3 className="text-lg font-semibold text-gray-900">{t('info.phone')}</h3>
                 <p className="text-gray-600">+1 (555) 123-4567</p>
               </div>
             </div>
@@ -80,10 +99,9 @@ const Contact = () => {
                 <MapPinIcon className="h-6 w-6 text-blue-600 mt-1" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900">Address</h3>
+                <h3 className="text-lg font-semibold text-gray-900">{t('info.address')}</h3>
                 <p className="text-gray-600">
-                  123 Tech Street<br />
-                  Innovation City, IC 12345
+                  {t('info.addressText')}
                 </p>
               </div>
             </div>

@@ -1,0 +1,35 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente azul moderno -->
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1D4ED8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente para o ícone -->
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891B2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fundo -->
+  <rect width="32" height="32" rx="6" fill="url(#logoGradient)"/>
+  
+  <!-- Ícone representando conexão/rede/tecnologia -->
+  <g transform="translate(6, 6)">
+    <!-- Elementos de conexão -->
+    <circle cx="6" cy="6" r="2" fill="white"/>
+    <circle cx="14" cy="6" r="2" fill="white"/>
+    <circle cx="10" cy="14" r="2" fill="white"/>
+    
+    <!-- Linhas de conexão -->
+    <line x1="6" y1="6" x2="14" y2="6" stroke="white" stroke-width="1.5" opacity="0.8"/>
+    <line x1="6" y1="6" x2="10" y2="14" stroke="white" stroke-width="1.5" opacity="0.8"/>
+    <line x1="14" y1="6" x2="10" y2="14" stroke="white" stroke-width="1.5" opacity="0.8"/>
+    
+    <!-- Ponto central -->
+    <circle cx="10" cy="9" r="1" fill="white"/>
+  </g>
+</svg>

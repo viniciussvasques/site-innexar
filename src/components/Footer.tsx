@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 
 const Footer = () => {
   const t = useTranslations('footer')
@@ -14,7 +15,15 @@ const Footer = () => {
           
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">Innexar</h3>
+            <div className="mb-4">
+              <Image
+                src="/logo-header.svg"
+                alt="Innexar"
+                width={140}
+                height={32}
+                className="h-8 w-auto brightness-0 invert"
+              />
+            </div>
             <p className="text-gray-300 mb-6 max-w-md">
               {t('description')}
             </p>
@@ -46,7 +55,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">{t('quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-white transition-colors">
@@ -68,12 +77,17 @@ const Footer = () => {
                   {nav('contact')}
                 </Link>
               </li>
+              <li>
+                <Link href="/saas" className="text-gray-300 hover:text-white transition-colors">
+                  {nav('saas')}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Contato</h4>
             <ul className="space-y-2 text-gray-300">
               <li>contact@innexar.com</li>
               <li>+1 (555) 123-4567</li>

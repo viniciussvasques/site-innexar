@@ -1,9 +1,12 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const locales = ['en', 'pt', 'es']
 
 type Props = {
   readonly children: React.ReactNode
@@ -15,12 +18,18 @@ export default async function RootLayout({
   params
 }: Props) {
   const { locale } = await params
-  const messages = await getMessages()
+  
+  // Validate locale
+  if (!locales.includes(locale)) {
+    notFound()
+  }
+
+  const messages = await getMessages({ locale })
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>

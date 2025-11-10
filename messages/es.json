@@ -2,9 +2,158 @@
   "navigation": {
     "home": "Inicio",
     "services": "Servicios",
+    "saas": "SaaS",
     "about": "Acerca",
     "portfolio": "Portafolio",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "getStarted": "Comenzar"
+  },
+  "saas": {
+    "title": "Innexar SaaS - Gestión Empresarial (ERP)",
+    "subtitle": "Plataforma ERP SaaS rebrandable y multi-tenant para pymes",
+    "overviewTitle": "Visión General",
+    "overviewDescription": "Plataforma web multiempresa y multiusuario con subdominios exclusivos por cliente y aprovisionamiento automático. Solución rebrandable y modular para escalabilidad y personalización.",
+    "objectiveTitle": "Objetivo del Sistema",
+    "objective": "Proporcionar una suite integrada de gestión (comercial, administrativa y operativa), contratación de planes en línea, creación automática de instancias/subdominios y módulos activables según el plan.",
+    "techTitle": "Estructura Técnica",
+    "tech": "Backend en Python, PostgreSQL, frontend en JavaScript moderno, despliegues en contenedores (Docker/Kubernetes), DNS wildcard para subdominios e integración con gateways de pago (Stripe, PayPal).",
+    "featuresTitle": "Características de Nivel Empresarial",
+    "featuresSubtitle": "Construida con escalabilidad y seguridad en mente, nuestra plataforma proporciona todo lo que necesita para ejecutar un negocio SaaS exitoso.",
+    "feature1": {
+      "title": "Arquitectura Multi-Tenant",
+      "description": "Entornos seguros y aislados para cada cliente con infraestructura compartida para eficiencia de costos óptima."
+    },
+    "feature2": {
+      "title": "Aprovisionamiento Automático",
+      "description": "Creación instantánea de subdominio, configuración de base de datos y aprovisionamiento de cuentas de usuario al suscribirse."
+    },
+    "feature3": {
+      "title": "Seguridad Empresarial",
+      "description": "Cifrado SSL, control de acceso basado en roles, registros de auditoría y cumplimiento con estándares de la industria."
+    },
+    "feature4": {
+      "title": "Análisis Avanzados",
+      "description": "Inteligencia de negocios en tiempo real, paneles personalizados e informes completos en todos los módulos."
+    },
+    "feature5": {
+      "title": "Gestión de Usuarios",
+      "description": "Sistema de permisos granulares, herramientas de colaboración en equipo y flujos de incorporación de usuarios sin problemas."
+    },
+    "feature6": {
+      "title": "Listo para White-Label",
+      "description": "Personalización completa de marca, dominio e interfaz de usuario para que coincida con la identidad de su empresa."
+    },
+    "hero": {
+      "badge": "Plataforma SaaS Lista para Empresas",
+      "watchDemo": "Ver Demo",
+      "clientDashboard": "Panel del Cliente",
+      "benefits": [
+        "Plataforma Multi-tenant 100% Web",
+        "Aprovisionamiento Automático de Subdominios",
+        "Rebranding White-label Completo",
+        "Activación de Módulos Escalable"
+      ]
+    },
+    "pricing": {
+      "title": "Precios Simples y Transparentes",
+      "subtitle": "Elija el plan perfecto para las necesidades de su negocio",
+      "monthly": "Mensual",
+      "yearly": "Anual",
+      "save20": "Ahorre 20%",
+      "perMonth": "/mes",
+      "selectPlan": "Seleccionar Plan",
+      "starter": {
+        "name": "Inicial",
+        "price": "$49",
+        "description": "Perfecto para pequeñas empresas que comienzan",
+        "features": [
+          "Hasta 5 usuarios",
+          "Gestión básica de inventario",
+          "Ventas y facturación",
+          "Soporte por correo",
+          "1 GB almacenamiento"
+        ]
+      },
+      "professional": {
+        "name": "Profesional",
+        "price": "$99",
+        "description": "Ideal para empresas en crecimiento con necesidades avanzadas",
+        "popular": "Más Popular",
+        "features": [
+          "Hasta 25 usuarios",
+          "Inventario avanzado y CRM",
+          "Gestión financiera",
+          "Soporte prioritario",
+          "10 GB almacenamiento",
+          "Informes personalizados"
+        ]
+      },
+      "enterprise": {
+        "name": "Empresarial",
+        "price": "$199",
+        "description": "Solución completa para grandes organizaciones",
+        "features": [
+          "Usuarios ilimitados",
+          "Todos los módulos incluidos",
+          "Soporte dedicado",
+          "Almacenamiento ilimitado",
+          "Acceso a API",
+          "Integraciones personalizadas",
+          "Opciones white-label"
+        ]
+      }
+    },
+    "overview": {
+      "title": "Visión General de la Plataforma",
+      "subtitle": "Una solución SaaS integral diseñada para escalabilidad y personalización",
+      "stats": {
+        "clients": "Clientes Activos",
+        "uptime": "Tiempo Activo",
+        "transactions": "Transacciones/Mes",
+        "support": "Respuesta Soporte"
+      },
+      "architecture": {
+        "title": "Arquitectura Técnica",
+        "frontend": "Frontend Moderno",
+        "frontendDesc": "React, TypeScript, Tailwind CSS",
+        "backend": "Backend Escalable",
+        "backendDesc": "Python, FastAPI, PostgreSQL",
+        "infrastructure": "Infraestructura en la Nube",
+        "infrastructureDesc": "Docker, Kubernetes, AWS",
+        "security": "Seguridad Empresarial",
+        "securityDesc": "SSL, OAuth2, Cifrado de Datos"
+      }
+    },
+    "testimonials": {
+      "title": "Lo Que Dicen Nuestros Clientes",
+      "subtitle": "Únase a cientos de empresas satisfechas que usan nuestra plataforma",
+      "client1": {
+        "quote": "Esta plataforma transformó cómo gestionamos nuestro negocio. Las características de automatización por sí solas nos ahorraron innumerables horas.",
+        "author": "Juan Smith",
+        "company": "Tech Solutions Inc",
+        "role": "CEO"
+      },
+      "client2": {
+        "quote": "Excelente soporte y características en constante mejora. Mejor inversión que hicimos para nuestras operaciones.",
+        "author": "María García",
+        "company": "Global Logistics",
+        "role": "Directora de Operaciones"
+      },
+      "client3": {
+        "quote": "Las capacidades white-label nos permitieron ofrecer esto como nuestra propia solución. Cambio de juego para nuestro modelo de negocio.",
+        "author": "David Chen",
+        "company": "StartupHub",
+        "role": "Fundador"
+      },
+      "trustBadges": {
+        "certified": "Certificado ISO 27001",
+        "gdpr": "Cumplimiento GDPR",
+        "support": "Soporte 24/7",
+        "uptime": "SLA 99.9%"
+      }
+    },
+    "plansTitle": "Planes y Modularización",
+    "cta": "Solicitar Demo"
   },
   "hero": {
     "title": "Soluciones Tecnológicas Innovadoras",
@@ -15,31 +164,275 @@
   "services": {
     "title": "Nuestros Servicios",
     "subtitle": "Soluciones tecnológicas integrales adaptadas a las necesidades de su negocio",
+    "hero": {
+      "title": "Transforme Su Negocio con Tecnología",
+      "subtitle": "Entregamos soluciones innovadoras que impulsan la innovación, eficiencia y crecimiento en todas las industrias",
+      "cta": "Iniciar Su Proyecto",
+      "consultation": "Consultoría Gratuita",
+      "stats": {
+        "projectsDelivered": "Proyectos Entregados",
+        "yearsExperience": "Años de Experiencia",
+        "happyClients": "Clientes Satisfechos",
+        "support": "Soporte"
+      }
+    },
+    "process": {
+      "title": "Nuestro Proceso Probado",
+      "subtitle": "Un enfoque sistemático que garantiza el éxito del proyecto y entrega resultados excepcionales",
+      "steps": [
+        {
+          "title": "Descubrimiento y Planificación",
+          "description": "Analizamos sus requisitos, definimos el alcance del proyecto y creamos una hoja de ruta detallada para el éxito."
+        },
+        {
+          "title": "Diseño y Arquitectura",
+          "description": "Nuestros expertos diseñan soluciones escalables con patrones de arquitectura modernos y mejores prácticas."
+        },
+        {
+          "title": "Desarrollo y Pruebas",
+          "description": "Desarrollo ágil con pruebas continuas, revisiones de código y procesos de garantía de calidad."
+        },
+        {
+          "title": "Implementación y Soporte",
+          "description": "Implementación perfecta en producción con monitoreo, mantenimiento y soporte continuos."
+        }
+      ],
+      "cta": {
+        "title": "¿Listo para iniciar su proyecto?",
+        "description": "Nuestro proceso probado garantiza la entrega exitosa de sus soluciones tecnológicas. Comencemos con una consultoría gratuita para entender sus necesidades.",
+        "button": "Programar Consultoría Gratuita"
+      }
+    },
+    "whyChooseUs": {
+      "title": "¿Por Qué Elegir Innexar?",
+      "subtitle": "Combinamos experiencia técnica con conocimiento empresarial para entregar soluciones que generan resultados reales",
+      "advantages": [
+        {
+          "icon": "ClockIcon",
+          "title": "Entrega Rápida",
+          "description": "Metodología ágil y equipos experimentados garantizan la finalización rápida del proyecto sin comprometer la calidad.",
+          "stats": "30% Más Rápido"
+        },
+        {
+          "icon": "ShieldCheckIcon",
+          "title": "Seguridad Empresarial",
+          "description": "Enfoque centrado en la seguridad con las mejores prácticas de la industria, estándares de cumplimiento y pruebas robustas.",
+          "stats": "99.9% Uptime"
+        },
+        {
+          "icon": "UserGroupIcon",
+          "title": "Equipo Experto",
+          "description": "Desarrolladores senior, arquitectos y consultores con historial probado en proyectos complejos.",
+          "stats": "15+ Años Promedio"
+        },
+        {
+          "icon": "LightBulbIcon",
+          "title": "Enfoque en Innovación",
+          "description": "Tecnologías de vanguardia y soluciones innovadoras que le mantienen por delante de la competencia.",
+          "stats": "Última Tecnología"
+        },
+        {
+          "icon": "CogIcon",
+          "title": "Soluciones Escalables",
+          "description": "Arquitectura diseñada para el crecimiento, asegurando que sus sistemas puedan manejar demandas crecientes.",
+          "stats": "Escala 10x"
+        },
+        {
+          "icon": "CheckCircleIcon",
+          "title": "Garantía de Calidad",
+          "description": "Procesos de prueba rigurosos y puertas de calidad aseguran la entrega de software confiable y sin errores.",
+          "stats": "99.5% de Precisión"
+        }
+      ],
+      "metrics": {
+        "title": "Historial Comprobado",
+        "subtitle": "Números que hablan de nuestro compromiso con la excelencia y el éxito del cliente",
+        "stats": [
+          { "number": "500+", "label": "Proyectos Completados" },
+          { "number": "98%", "label": "Satisfacción del Cliente" },
+          { "number": "250+", "label": "Clientes Satisfechos" },
+          { "number": "15+", "label": "Países Atendidos" }
+        ]
+      },
+      "testimonials": {
+        "title": "Lo Que Dicen Nuestros Clientes",
+        "quotes": [
+          {
+            "quote": "Innexar transformó nuestro sistema heredado en una plataforma moderna y escalable. ¡Trabajo excepcional!",
+            "author": "Sarah Johnson",
+            "company": "TechCorp",
+            "role": "CTO"
+          },
+          {
+            "quote": "Profesionales, confiables e innovadores. Superaron nuestras expectativas en todos los aspectos.",
+            "author": "Miguel Rodriguez",
+            "company": "Innovation Labs",
+            "role": "CEO"
+          },
+          {
+            "quote": "El mejor socio tecnológico con el que hemos trabajado. Recomiendo mucho sus servicios.",
+            "author": "Lisa Chen",
+            "company": "Global Solutions",
+            "role": "Directora de TI"
+          }
+        ]
+      }
+    },
     "development": {
       "title": "Desarrollo de Software",
-      "description": "Aplicaciones personalizadas, plataformas web y soluciones móviles construidas con tecnologías modernas"
+      "description": "Aplicaciones personalizadas, plataformas web y soluciones móviles construidas con tecnologías modernas",
+      "fullDescription": "Nuestro equipo experto crea soluciones de software escalables, seguras y de alto rendimiento adaptadas a sus requisitos únicos de negocio. Desde aplicaciones web hasta apps móviles y sistemas empresariales.",
+      "benefits": [
+        "Soluciones personalizadas",
+        "Arquitectura escalable",
+        "Stack tecnológico moderno",
+        "Metodología ágil",
+        "Soporte 24/7"
+      ],
+      "technologies": ["React", "Node.js", "Python", "TypeScript", "AWS", "Docker"]
     },
     "infrastructure": {
       "title": "Infraestructura y DevOps",
-      "description": "Arquitectura en la nube, automatización y soluciones de infraestructura escalables"
+      "description": "Arquitectura en la nube, automatización y soluciones de infraestructura escalables",
+      "fullDescription": "Transforme su infraestructura de TI con soluciones nativas de la nube, automatización y prácticas DevOps que garantizan confiabilidad, escalabilidad y rentabilidad.",
+      "benefits": [
+        "Migración a la nube",
+        "Automatización de infraestructura",
+        "Pipelines CI/CD",
+        "Monitoreo y alertas",
+        "Optimización de costos"
+      ],
+      "technologies": ["AWS", "Azure", "Kubernetes", "Terraform", "Jenkins", "Prometheus"]
     },
     "consulting": {
       "title": "Consultoría Tecnológica",
-      "description": "Orientación estratégica y asesoramiento experto para impulsar su transformación digital"
+      "description": "Orientación estratégica y asesoramiento experto para impulsar su transformación digital",
+      "fullDescription": "Navegue por el complejo panorama tecnológico con nuestros servicios de consultoría estratégica. Le ayudamos a tomar decisiones informadas, optimizar procesos y acelerar la transformación digital.",
+      "benefits": [
+        "Planificación estratégica",
+        "Evaluación tecnológica",
+        "Optimización de procesos",
+        "Gestión del cambio",
+        "Maximización del ROI"
+      ],
+      "technologies": ["Arquitectura Empresarial", "Estrategia Digital", "Process Mining", "Analytics", "AI/ML", "Blockchain"]
     },
     "support": {
       "title": "Soporte y Mantenimiento",
-      "description": "Soporte continuo y mantenimiento para mantener sus sistemas funcionando sin problemas"
+      "description": "Soporte continuo y mantenimiento para mantener sus sistemas funcionando sin problemas",
+      "fullDescription": "Asegure que sus sistemas operen con máximo rendimiento con nuestros servicios integrales de soporte y mantenimiento. Del monitoreo proactivo a la resolución rápida de problemas.",
+      "benefits": [
+        "Monitoreo 24/7",
+        "Respuesta rápida",
+        "Mantenimiento preventivo",
+        "Optimización de rendimiento",
+        "Actualizaciones de seguridad"
+      ],
+      "technologies": ["Herramientas de Monitoreo", "ITSM", "Automatización", "Parches de Seguridad", "Optimización de Rendimiento", "Soluciones de Respaldo"]
+    },
+    "whyChoose": {
+      "title": "¿Por Qué Elegir Innexar?",
+      "subtitle": "Experiencia en la industria y resultados probados",
+      "reasons": [
+        {
+          "title": "Equipo Experto",
+          "description": "Profesionales certificados con profundo conocimiento de la industria"
+        },
+        {
+          "title": "Historial Comprobado",
+          "description": "50+ proyectos exitosos en diversas industrias"
+        },
+        {
+          "title": "Enfoque en Innovación",
+          "description": "Siempre usando las últimas tecnologías y mejores prácticas"
+        },
+        {
+          "title": "Centrado en el Cliente",
+          "description": "Su éxito es nuestra prioridad, en cada paso del camino"
+        }
+      ]
+    },
+    "servicesCta": {
+      "title": "¿Listo para Comenzar Su Próximo Proyecto?",
+      "subtitle": "Póngase en contacto con nuestros expertos hoy y descubra cómo podemos transformar su negocio con soluciones tecnológicas innovadoras.",
+      "primaryButton": "Consultoría Gratuita",
+      "secondaryButton": "Ver Portafolio",
+      "options": {
+        "phone": {
+          "title": "Llámenos",
+          "description": "Hable directamente con nuestros expertos",
+          "action": "Llamar Ahora"
+        },
+        "email": {
+          "title": "Envíenos un Correo",
+          "description": "Envíenos los detalles de su proyecto",
+          "action": "Enviar Correo"
+        },
+        "meeting": {
+          "title": "Programar Reunión",
+          "description": "Reserve una consultoría",
+          "action": "Reservar Ahora",
+          "value": "Llamada Gratuita de 30 min"
+        },
+        "chat": {
+          "title": "Chat en Vivo",
+          "description": "Chatee con nuestro equipo",
+          "action": "Iniciar Chat",
+          "value": "En Línea Ahora"
+        }
+      },
+      "urgency": {
+        "title": "Oferta por Tiempo Limitado",
+        "description": "Obtenga una evaluación gratuita del proyecto y un 20% de descuento en su primer proyecto al contactarnos este mes.",
+        "badge": "LIMITADO",
+        "offer": "20% de Descuento en el Primer Proyecto",
+        "action": "Reclamar Oferta"
+      },
+      "trust": {
+        "subtitle": "Confiable por empresas en todo el mundo",
+        "indicators": [
+          "Certificado ISO 27001",
+          "Cumplimiento GDPR",
+          "Soporte 24/7",
+          "Garantía de Devolución de Dinero"
+        ]
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Transformar Su Negocio?",
+      "subtitle": "Discutamos cómo podemos ayudarle a alcanzar sus objetivos tecnológicos",
+      "button": "Comenzar Hoy",
+      "contact": "Programar una Consultoría"
     }
   },
   "about": {
     "title": "Acerca de Innexar",
     "subtitle": "Liderando el camino en soluciones tecnológicas innovadoras",
-    "description": "Somos un equipo de expertos en tecnología apasionados, dedicados a entregar resultados excepcionales para nuestros clientes. Con años de experiencia en desarrollo de software, infraestructura y consultoría, ayudamos a las empresas a transformarse y crecer en la era digital."
+    "description": "Somos un equipo de expertos en tecnología apasionados, dedicados a entregar resultados excepcionales para nuestros clientes. Con años de experiencia en desarrollo de software, infraestructura y consultoría, ayudamos a las empresas a transformarse y crecer en la era digital.",
+    "features": {
+      "expertTeam": "Equipo Experto",
+      "provenTrack": "Historial Comprobado",
+      "cuttingEdge": "Tecnología de Vanguardia",
+      "customerFocus": "Enfoque en el Cliente",
+      "support247": "Soporte 24/7",
+      "scalable": "Soluciones Escalables"
+    },
+    "stats": {
+      "yearsTitle": "Años de Excelencia",
+      "projectsTitle": "Proyectos Entregados",
+      "satisfactionTitle": "Satisfacción del Cliente"
+    },
+    "learnMoreBtn": "Saber Más Sobre Nosotros"
   },
   "contact": {
     "title": "Ponerse en Contacto",
     "subtitle": "¿Listo para comenzar su próximo proyecto?",
+    "info": {
+      "email": "Correo",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "addressText": "Calle de la Tecnología, 123\nCiudad de la Innovación, CI 12345"
+    },
     "form": {
       "name": "Nombre",
       "email": "Correo",
@@ -50,6 +443,21 @@
   },
   "footer": {
     "copyright": "© 2025 Innexar. Todos los derechos reservados.",
-    "description": "Soluciones tecnológicas innovadoras para empresas modernas"
+    "description": "Soluciones tecnológicas innovadoras para empresas modernas",
+    "quickLinks": "Enlaces Rápidos"
+  },
+  "portfolio": {
+    "title": "Nuestro Portafolio",
+    "subtitle": "Descubre las soluciones innovadoras que hemos construido para nuestros clientes",
+    "filterAll": "Todos los Proyectos",
+    "filterWeb": "Desarrollo Web",
+    "filterMobile": "Apps Móviles",
+    "filterCloud": "Soluciones en la Nube",
+    "filterData": "Análisis de Datos",
+    "viewProject": "Ver Proyecto",
+    "technologies": "Tecnologías Utilizadas",
+    "projectsCount": "Proyectos Completados",
+    "clientsCount": "Clientes Satisfechos",
+    "yearsCount": "Años de Experiencia"
   }
 }
