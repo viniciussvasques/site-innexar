@@ -1,0 +1,17 @@
+{
+  "name": "@structurone/database",
+  "version": "0.1.0",
+  "description": "Database schemas and migrations for StructurOne",
+  "scripts": {
+    "migrate": "node dist/migrate.js",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
+

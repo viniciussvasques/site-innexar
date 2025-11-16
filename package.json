@@ -1,0 +1,41 @@
+{
+  "name": "structurone",
+  "version": "0.1.0",
+  "description": "SaaS platform for construction project management and investment tracking",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^1.11.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viniciussvasques/structurone.git"
+  },
+  "keywords": [
+    "saas",
+    "construction",
+    "project-management",
+    "multi-tenant",
+    "investment-tracking"
+  ],
+  "author": "Innexar",
+  "license": "UNLICENSED"
+}
+
