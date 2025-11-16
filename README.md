@@ -50,7 +50,33 @@ structurone/
 
 ## 🚀 Início Rápido
 
-### 1. Backend (API)
+### Opção 1: Docker Compose (Recomendado) 🐳
+
+```bash
+# Construir e iniciar todos os serviços
+docker-compose up -d --build
+
+# Ver logs
+docker-compose logs -f
+
+# Criar superusuário
+docker-compose exec backend python manage.py createsuperuser
+
+# Criar tenants de teste
+docker-compose exec backend python test_tenant_local.py
+```
+
+**Serviços disponíveis:**
+- Backend API: http://localhost:8000/api/
+- Django Admin: http://localhost:8000/admin/
+- Admin Panel: http://localhost:3001
+- Frontend: http://localhost:3000 (quando implementado)
+
+📖 **Guia completo**: Veja [README_DOCKER.md](README_DOCKER.md)
+
+### Opção 2: Instalação Manual
+
+#### 1. Backend (API)
 
 ```bash
 cd backend
@@ -65,7 +91,7 @@ python manage.py runserver
 # API: http://localhost:8000/api/
 ```
 
-### 2. Frontend (Web)
+#### 2. Frontend (Web)
 
 ```bash
 cd frontend
@@ -74,7 +100,7 @@ npm run dev
 # Frontend: http://localhost:3000
 ```
 
-### 3. Admin Panel (Next.js)
+#### 3. Admin Panel (Next.js)
 
 ```bash
 cd admin
