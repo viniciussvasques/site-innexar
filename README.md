@@ -67,10 +67,10 @@ docker-compose exec backend python test_tenant_local.py
 ```
 
 **Serviços disponíveis:**
-- Backend API: http://localhost:8000/api/
-- Django Admin: http://localhost:8000/admin/
-- Admin Panel: http://localhost:3001
-- Frontend: http://localhost:3000 (quando implementado)
+- Backend API: http://localhost:8010/api/
+- Django Admin: http://localhost:8010/admin/
+- Admin Panel: http://localhost:3011
+- Frontend: http://localhost:3010 (quando implementado)
 
 📖 **Guia completo**: Veja [README_DOCKER.md](README_DOCKER.md)
 
@@ -88,7 +88,7 @@ cp .env.example .env
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
-# API: http://localhost:8000/api/
+# API: http://localhost:8010/api/
 ```
 
 #### 2. Frontend (Web)
@@ -97,7 +97,7 @@ python manage.py runserver
 cd frontend
 npm install
 npm run dev
-# Frontend: http://localhost:3000
+# Frontend: http://localhost:3010
 ```
 
 #### 3. Admin Panel (Next.js)
@@ -107,7 +107,7 @@ cd admin
 npm install
 cp .env.example .env.local
 npm run dev
-# Admin: http://localhost:3001
+# Admin: http://localhost:3011
 ```
 
 ## 🛠️ Tecnologias

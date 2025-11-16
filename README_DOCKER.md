@@ -35,11 +35,11 @@ docker-compose logs -f admin
 
 ### 3. Acessar os Serviços
 
-- **Backend API**: http://localhost:8000/api/
-- **Django Admin**: http://localhost:8000/admin/
-- **Admin Panel**: http://localhost:3001
-- **Frontend**: http://localhost:3000 (quando implementado)
-- **PostgreSQL**: localhost:5432
+- **Backend API**: http://localhost:8010/api/
+- **Django Admin**: http://localhost:8010/admin/
+- **Admin Panel**: http://localhost:3011
+- **Frontend**: http://localhost:3010 (quando implementado)
+- **PostgreSQL**: localhost:5433
 
 ### 4. Criar Superusuário
 
@@ -207,7 +207,7 @@ docker-compose exec db psql -U postgres -d structurone
 
 # Via cliente externo
 # Host: localhost
-# Port: 5432
+# Port: 5433
 # User: postgres
 # Password: postgres (ou a do .env)
 # Database: structurone
