@@ -4,6 +4,8 @@ const nextConfig = {
   env: {
     API_URL: process.env.API_URL || 'http://localhost:8000/api',
   },
+  // Para funcionar em Docker
+  output: 'standalone',
 };
 
 module.exports = nextConfig;

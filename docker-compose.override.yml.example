@@ -1,0 +1,19 @@
+# Arquivo de override para desenvolvimento local
+# Copie para docker-compose.override.yml e ajuste conforme necessário
+
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      - DEBUG=True
+      # Adicione suas variáveis de ambiente aqui
+
+  admin:
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+
+  frontend:
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+

@@ -1,0 +1,35 @@
+version: '3.8'
+
+# Docker Compose para Produção
+# Uso: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  backend:
+    command: gunicorn structurone.wsgi:application --bind 0.0.0.0:8000 --workers 4 --timeout 120
+    environment:
+      - DEBUG=False
+      - ALLOWED_HOSTS=structurone.com,admin.structurone.com,.structurone.com
+    volumes:
+      - ./backend:/app
+      - backend_static:/app/staticfiles
+      - backend_media:/app/media
+    # Remover volumes de desenvolvimento se necessário
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile.prod
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://structurone.com/api
+    # Remover volumes de desenvolvimento
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://structurone.com/api
+    # Remover volumes de desenvolvimento
+
