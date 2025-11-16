@@ -11,6 +11,7 @@ urlpatterns = [
     # API Backend
     path('api/', include('apps.core.urls')),
     path('api/auth/', include('apps.core.auth_urls')),
+    path('api/tenants/', include('apps.tenants.urls')),  # Tenants API
     path('api/projects/', include('apps.projects.urls')),
     path('api/investors/', include('apps.investors.urls')),
     path('api/financial/', include('apps.financial.urls')),

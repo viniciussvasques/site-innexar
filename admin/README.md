@@ -1,60 +1,73 @@
 # Painel Admin - StructurOne
 
-Painel administrativo customizado para gestão da plataforma StructurOne.
+Painel administrativo desenvolvido com **Next.js** (mesma tecnologia do frontend).
 
 ## 🚀 Início Rápido
-
-O painel admin é uma aplicação Django separada que consome a API do backend.
 
 ```bash
 # Entrar na pasta admin
 cd admin
 
-# O admin usa o mesmo ambiente virtual do backend
-# Ativar ambiente virtual (do backend)
-cd ../backend
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
+# Instalar dependências
+npm install
 
-# Voltar para admin
-cd ../admin
+# Configurar variáveis de ambiente
+cp .env.example .env.local
+# Editar .env.local com suas configurações
 
-# Executar servidor (se configurado separadamente)
-# Ou acessar via backend: http://localhost:8000/admin/
+# Executar em desenvolvimento
+npm run dev
+
+# Acessar em http://localhost:3001
 ```
 
 ## 📁 Estrutura
 
 ```
 admin/
-├── apps/                 # Apps do admin
-│   └── admin/           # App principal do admin
-│       ├── urls.py      # URLs do admin
-│       ├── views.py     # Views do admin
-│       └── admin.py     # Customização Django Admin
-├── templates/            # Templates do admin
-│   ├── base.html        # Template base
-│   └── dashboard.html   # Dashboard
-└── static/              # Arquivos estáticos
+├── src/
+│   └── app/              # Next.js App Router
+│       ├── layout.tsx    # Layout principal
+│       ├── page.tsx      # Página inicial
+│       ├── tenants/      # Gerenciamento de Tenants
+│       │   ├── page.tsx  # Lista de tenants
+│       │   └── [id]/     # Detalhes do tenant
+│       └── dashboard/    # Dashboard (futuro)
+├── package.json          # Dependências
+├── tsconfig.json         # TypeScript config
+└── next.config.js        # Next.js config
 ```
 
-## 🔗 URLs
+## 🔌 Integração com API
 
-- Django Admin padrão: `http://localhost:8000/admin/`
-- Admin customizado: `http://localhost:8000/admin-panel/`
+O admin consome a API REST do backend:
 
-## 👨‍💼 Funcionalidades
+- **Base URL**: `http://localhost:8000/api/`
+- **Autenticação**: JWT tokens (a implementar)
+- **CORS**: Configurado no backend
 
-1. **Dashboard** - Visão geral do sistema
-2. **Gestão de Tenants** - Gerenciar clientes
-3. **Gestão de Usuários** - Gerenciar usuários do sistema
-4. **Configurações** - Configurações do sistema
+## 📋 Funcionalidades
 
-## 🔐 Acesso
+### ✅ Implementado
 
-Requer permissão de staff (`is_staff=True`).
+1. **Gerenciamento de Tenants**
+   - Listar tenants
+   - Ver detalhes do tenant
+   - Ativar/Desativar tenant
+   - Criar novo tenant (a implementar)
 
-## 📝 Nota
+### 🚧 Em Desenvolvimento
 
-O admin pode ser integrado ao backend ou rodar como aplicação separada, dependendo da arquitetura escolhida.
+1. **Autenticação JWT**
+2. **Dashboard com estatísticas**
+3. **Gestão de usuários**
+4. **Configurações do sistema**
 
+## 🧪 Testes
+
+Os testes do backend cobrem a API de tenants. Testes do frontend podem ser adicionados com Jest/React Testing Library.
+
+## 📚 Documentação
+
+- [API Endpoints](../docs/API_ENDPOINTS.md)
+- [Estrutura do Projeto](../docs/STRUCTURE.md)
