@@ -29,12 +29,12 @@ Plataforma SaaS para gestão completa de empreendimentos, captação de investim
 
 ## Arquitetura
 
-- **Monorepo** com workspaces (npm)
-- **Backend**: Node.js + TypeScript + Express
-- **Frontend**: Next.js + React + TypeScript
+- **Backend**: Django 5.0+ + Python 3.11+
+- **API**: Django REST Framework
+- **Frontend**: Next.js (separado) ou Django Templates
 - **Database**: PostgreSQL (multi-tenant)
 - **CI/CD**: GitHub Actions
-- **Build Tool**: Turbo
+- **Multi-tenant**: django-tenants
 
 ## Estrutura de Diretórios
 
