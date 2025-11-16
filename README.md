@@ -19,27 +19,47 @@ O **StructurOne** é uma plataforma SaaS desenvolvida pela **Innexar** que centr
 
 ## 🏗️ Arquitetura
 
-O projeto utiliza Django como framework principal:
+O projeto está **separado em 3 partes principais**:
+
+### 1. 🔌 Backend (API)
+- **Framework**: Django REST Framework
+- **URL**: `http://localhost:8000/api/`
+- **Localização**: `apps/*/`
+- **Autenticação**: JWT
+
+### 2. 🌐 Frontend (Web)
+- **Opção 1**: Next.js (recomendado) - `frontend/`
+- **Opção 2**: Django Templates - `templates/frontend/`
+- **URL**: `http://localhost:3000` (Next.js) ou integrado ao Django
+
+### 3. 👨‍💼 Painel Admin
+- **Framework**: Django Admin customizado
+- **URL**: `http://localhost:8000/admin/` (Django Admin padrão)
+- **URL**: `http://localhost:8000/admin-panel/` (Custom Admin)
+- **Localização**: `apps/admin/`
 
 ```
 structurone/
-├── structurone/      # Configurações do projeto Django
-├── apps/             # Aplicações Django
-│   ├── core/        # Core app
-│   ├── tenants/      # Multi-tenant
-│   ├── projects/     # Gestão de projetos
-│   ├── investors/    # Portal do investidor
-│   ├── financial/    # Gestão financeira
-│   ├── documents/    # Upload de documentos
-│   └── updates/      # Atualizações de obra
-├── static/           # Arquivos estáticos
-├── media/            # Arquivos de mídia
-├── templates/        # Templates Django
-├── locale/           # Traduções i18n
-├── .github/
-│   └── workflows/    # CI/CD
-└── docs/             # Documentação
+├── structurone/          # Configurações Django
+├── apps/                 # Aplicações Django
+│   ├── core/            # Core app (API + Frontend URLs)
+│   ├── admin/           # Painel Admin Customizado
+│   ├── tenants/         # Multi-tenant
+│   ├── projects/        # API: /api/projects/
+│   ├── investors/       # API: /api/investors/
+│   ├── financial/       # API: /api/financial/
+│   ├── documents/       # API: /api/documents/
+│   └── updates/         # API: /api/updates/
+├── frontend/             # Frontend Next.js (quando implementado)
+├── templates/            # Templates Django
+│   ├── admin/           # Templates do Admin
+│   └── frontend/        # Templates do Frontend
+├── static/               # Arquivos estáticos
+├── media/                # Arquivos de mídia
+└── docs/                 # Documentação
 ```
+
+📖 **Documentação completa**: Veja [docs/STRUCTURE.md](docs/STRUCTURE.md)
 
 ## 🛠️ Tecnologias
 
@@ -58,6 +78,8 @@ structurone/
 - pip >= 23.0
 
 ## 🚀 Instalação
+
+### Backend (API)
 
 ```bash
 # Criar ambiente virtual
@@ -84,6 +106,17 @@ python manage.py createsuperuser
 
 # Executar servidor de desenvolvimento
 python manage.py runserver
+# API disponível em http://localhost:8000/api/
+# Admin disponível em http://localhost:8000/admin/
+```
+
+### Frontend (Next.js - quando implementado)
+
+```bash
+cd frontend
+npm install
+npm run dev
+# Frontend disponível em http://localhost:3000
 ```
 
 ## 🌍 Internacionalização
