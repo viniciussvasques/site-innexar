@@ -25,22 +25,22 @@ echo ""
 
 # Teste 2: Com header tenant 1
 echo "📋 Teste 2: Requisição com header X-Tenant-Slug: empresa-abc"
-echo "   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8000/api/tenants/"
-curl -s -H "X-Tenant-Slug: empresa-abc" http://localhost:8000/api/tenants/ | head -20
+echo "   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8010/api/tenants/"
+curl -s -H "X-Tenant-Slug: empresa-abc" http://localhost:8010/api/tenants/ | head -20
 echo ""
 echo ""
 
 # Teste 3: Com header tenant 2
 echo "📋 Teste 3: Requisição com header X-Tenant-Slug: construtora-xyz"
-echo "   curl -H \"X-Tenant-Slug: construtora-xyz\" http://localhost:8000/api/tenants/"
-curl -s -H "X-Tenant-Slug: construtora-xyz" http://localhost:8000/api/tenants/ | head -20
+echo "   curl -H \"X-Tenant-Slug: construtora-xyz\" http://localhost:8010/api/tenants/"
+curl -s -H "X-Tenant-Slug: construtora-xyz" http://localhost:8010/api/tenants/ | head -20
 echo ""
 echo ""
 
 # Teste 4: Detalhes do tenant
 echo "📋 Teste 4: Detalhes do tenant empresa-abc"
-echo "   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8000/api/tenants/1/"
-curl -s -H "X-Tenant-Slug: empresa-abc" http://localhost:8000/api/tenants/1/ | head -20
+echo "   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8010/api/tenants/1/"
+curl -s -H "X-Tenant-Slug: empresa-abc" http://localhost:8010/api/tenants/1/ | head -20
 echo ""
 echo ""
 
