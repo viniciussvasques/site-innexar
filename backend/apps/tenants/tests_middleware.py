@@ -76,7 +76,7 @@ class TenantMiddlewareTest(TestCase):
         """Testa que middleware usa header em desenvolvimento"""
         request = self.factory.get('/api/projects/')
         request.META['HTTP_HOST'] = 'localhost:8000'
-        request.headers = {'X-Tenant-Slug': 'cliente-teste'}
+        request.META['HTTP_X_TENANT_SLUG'] = 'cliente-teste'
         
         self.middleware.process_request(request)
         

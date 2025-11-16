@@ -20,7 +20,7 @@ class TenantMiddleware(MiddlewareMixin):
         # Em desenvolvimento, pode usar localhost com header
         if 'localhost' in host or '127.0.0.1' in host:
             # Para desenvolvimento, pode usar header X-Tenant-Slug
-            tenant_slug = request.headers.get('X-Tenant-Slug')
+            tenant_slug = request.META.get('HTTP_X_TENANT_SLUG')
             if tenant_slug:
                 try:
                     tenant = Tenant.objects.get(slug=tenant_slug, is_active=True)
