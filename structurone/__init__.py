@@ -1,0 +1,2 @@
+# StructurOne - Django Project
+

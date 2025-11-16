@@ -15,17 +15,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '18'
-          cache: 'npm'
+          python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          pip install -r requirements.txt
 
-      - name: Build
-        run: npm run build
+      - name: Collect static files
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        run: |
+          python manage.py collectstatic --noinput
 
       - name: Deploy
         run: |

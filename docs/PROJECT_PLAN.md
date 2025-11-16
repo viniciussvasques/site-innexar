@@ -40,14 +40,22 @@ Plataforma SaaS para gestão completa de empreendimentos, captação de investim
 
 ```
 structurone/
-├── packages/
-│   ├── api/          # Backend API
-│   ├── web/          # Frontend Web
-│   ├── shared/       # Código compartilhado
-│   └── database/     # Schemas e migrações
+├── structurone/      # Configurações Django
+├── apps/             # Aplicações Django
+│   ├── core/        # Core app
+│   ├── tenants/     # Multi-tenant
+│   ├── projects/    # Gestão de projetos
+│   ├── investors/   # Portal do investidor
+│   ├── financial/    # Gestão financeira
+│   ├── documents/   # Upload de documentos
+│   └── updates/     # Atualizações de obra
+├── static/          # Arquivos estáticos
+├── media/           # Arquivos de mídia
+├── templates/       # Templates Django
+├── locale/          # Traduções i18n
 ├── .github/
-│   └── workflows/    # CI/CD
-└── docs/             # Documentação
+│   └── workflows/   # CI/CD
+└── docs/            # Documentação
 ```
 
 ## Roadmap MVP
@@ -76,17 +84,18 @@ structurone/
 
 ## Padrões e Convenções
 
-- **Linguagem**: TypeScript
-- **Formatação**: Prettier
-- **Linting**: ESLint
+- **Linguagem**: Python 3.11+
+- **Formatação**: Black
+- **Linting**: Flake8
+- **Imports**: isort
 - **Commits**: Conventional Commits
 - **Branches**: Git Flow
-- **Testes**: Jest/Vitest
+- **Testes**: pytest + pytest-django
 
 ## Configurações
 
-- **Node.js**: >= 18.0.0
-- **npm**: >= 9.0.0
+- **Python**: >= 3.11
+- **Django**: >= 5.0.0
 - **PostgreSQL**: >= 14.0
 - **Deployment**: VPS (conforme preferência)
 

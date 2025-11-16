@@ -4,8 +4,8 @@
 
 ### Pré-requisitos
 
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+- Python >= 3.11
+- pip >= 23.0
 - PostgreSQL >= 14.0
 - Git
 
@@ -16,57 +16,82 @@
 git clone https://github.com/viniciussvasques/structurone.git
 cd structurone
 
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar ambiente virtual
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
 # Instalar dependências
-npm install
+pip install -r requirements.txt
 
 # Configurar variáveis de ambiente
 cp .env.example .env
 # Editar .env com suas configurações
+
+# Executar migrações
+python manage.py migrate
+
+# Criar superusuário
+python manage.py createsuperuser
+
+# Executar servidor
+python manage.py runserver
 ```
 
-## Scripts Disponíveis
+## Comandos Disponíveis
 
-### Root Level
+### Django Management
 
-- `npm run dev` - Inicia todos os pacotes em modo desenvolvimento
-- `npm run build` - Build de todos os pacotes
-- `npm run test` - Executa testes
-- `npm run lint` - Executa linter
-- `npm run type-check` - Verifica tipos TypeScript
-- `npm run format` - Formata código com Prettier
+- `python manage.py runserver` - Inicia servidor de desenvolvimento
+- `python manage.py migrate` - Executa migrações
+- `python manage.py makemigrations` - Cria migrações
+- `python manage.py createsuperuser` - Cria superusuário
+- `python manage.py collectstatic` - Coleta arquivos estáticos
+- `python manage.py compilemessages` - Compila traduções
 
-### Por Pacote
+### Desenvolvimento
 
-Cada pacote possui seus próprios scripts. Consulte o `package.json` de cada um.
+- `black .` - Formata código
+- `flake8 .` - Verifica estilo de código
+- `isort .` - Organiza imports
+- `pytest` - Executa testes
+- `pytest --cov=.` - Executa testes com cobertura
 
 ## Convenções de Código
 
-### TypeScript
+### Python/Django
 
-- Sempre use TypeScript
-- Evite `any` - use tipos específicos
-- Use interfaces para objetos
-- Use enums para constantes relacionadas
+- Siga PEP 8
+- Use type hints quando possível
+- Use docstrings para funções e classes
+- Mantenha linhas com máximo de 100 caracteres
 
 ### Nomenclatura
 
-- **Arquivos**: kebab-case (`user-service.ts`)
-- **Componentes**: PascalCase (`UserProfile.tsx`)
-- **Funções/Variáveis**: camelCase (`getUserData`)
+- **Arquivos**: snake_case (`user_service.py`)
+- **Classes**: PascalCase (`UserProfile`)
+- **Funções/Variáveis**: snake_case (`get_user_data`)
 - **Constantes**: UPPER_SNAKE_CASE (`MAX_FILE_SIZE`)
-- **Tipos/Interfaces**: PascalCase (`UserData`)
+- **Models**: PascalCase (`Project`, `Investor`)
+- **Views**: snake_case (`project_list`, `create_investor`)
 
-### Estrutura de Pastas
+### Estrutura de Apps Django
 
 ```
-src/
-├── components/     # Componentes reutilizáveis
-├── pages/         # Páginas (Next.js)
-├── services/      # Serviços e APIs
-├── hooks/         # Custom hooks
-├── utils/         # Funções utilitárias
-├── types/         # Definições de tipos
-└── constants/     # Constantes
+apps/projects/
+├── __init__.py
+├── admin.py          # Admin configuration
+├── apps.py           # App config
+├── models.py         # Models
+├── views.py          # Views/ViewSets
+├── serializers.py    # DRF Serializers
+├── urls.py           # URL routing
+├── tests.py          # Tests
+└── migrations/       # Database migrations
 ```
 
 ## Git Workflow
@@ -93,9 +118,10 @@ test: adiciona testes para módulo de investimentos
 
 ## Testes
 
-- Unitários: Jest ou Vitest
-- Integração: Supertest
-- E2E: Playwright ou Cypress
+- Framework: pytest + pytest-django
+- Cobertura: pytest-cov
+- Fixtures: pytest fixtures
+- Mocks: unittest.mock ou pytest-mock
 
 ## Code Review
 

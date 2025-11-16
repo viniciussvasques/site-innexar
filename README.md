@@ -19,15 +19,23 @@ O **StructurOne** é uma plataforma SaaS desenvolvida pela **Innexar** que centr
 
 ## 🏗️ Arquitetura
 
-O projeto utiliza uma arquitetura monorepo com workspaces:
+O projeto utiliza Django como framework principal:
 
 ```
 structurone/
-├── packages/
-│   ├── api/          # Backend API
-│   ├── web/          # Frontend Web
-│   ├── shared/       # Código compartilhado
-│   └── database/     # Schemas e migrações
+├── structurone/      # Configurações do projeto Django
+├── apps/             # Aplicações Django
+│   ├── core/        # Core app
+│   ├── tenants/      # Multi-tenant
+│   ├── projects/     # Gestão de projetos
+│   ├── investors/    # Portal do investidor
+│   ├── financial/    # Gestão financeira
+│   ├── documents/    # Upload de documentos
+│   └── updates/      # Atualizações de obra
+├── static/           # Arquivos estáticos
+├── media/            # Arquivos de mídia
+├── templates/        # Templates Django
+├── locale/           # Traduções i18n
 ├── .github/
 │   └── workflows/    # CI/CD
 └── docs/             # Documentação
@@ -35,35 +43,47 @@ structurone/
 
 ## 🛠️ Tecnologias
 
-- **Backend**: Node.js, TypeScript
-- **Frontend**: React/Next.js
+- **Backend**: Django 5.0+, Python 3.11+
+- **API**: Django REST Framework
 - **Database**: PostgreSQL (multi-tenant)
+- **Authentication**: JWT (djangorestframework-simplejwt)
+- **Multi-tenant**: django-tenants
 - **CI/CD**: GitHub Actions
-- **Package Manager**: npm workspaces + Turbo
+- **Frontend**: Next.js (separado) ou Django Templates
 
 ## 📋 Pré-requisitos
 
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+- Python >= 3.11
 - PostgreSQL >= 14.0
+- pip >= 23.0
 
 ## 🚀 Instalação
 
 ```bash
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar ambiente virtual
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
 # Instalar dependências
-npm install
+pip install -r requirements.txt
 
-# Desenvolvimento
-npm run dev
+# Configurar variáveis de ambiente
+cp .env.example .env
+# Editar .env com suas configurações
 
-# Build
-npm run build
+# Executar migrações
+python manage.py migrate
 
-# Testes
-npm run test
+# Criar superusuário
+python manage.py createsuperuser
 
-# Lint
-npm run lint
+# Executar servidor de desenvolvimento
+python manage.py runserver
 ```
 
 ## 🌍 Internacionalização
