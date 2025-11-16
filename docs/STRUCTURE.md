@@ -2,199 +2,142 @@
 
 ## Visão Geral
 
-O projeto StructurOne está organizado em **3 partes principais**:
+O projeto StructurOne está **organizado em 3 pastas principais**, cada uma completamente separada:
 
-1. **Backend (API)** - Django REST Framework
-2. **Frontend (Web)** - Next.js ou Django Templates
-3. **Painel Admin** - Django Admin customizado
+1. **`backend/`** - Backend API (Django REST Framework)
+2. **`admin/`** - Painel Admin (Django Admin customizado)
+3. **`frontend/`** - Frontend Web (Next.js)
 
 ## 📁 Estrutura de Diretórios
 
 ```
 structurone/
-├── structurone/              # Configurações Django
-│   ├── settings.py          # Configurações principais
-│   ├── urls.py              # URLs principais (roteamento)
-│   ├── wsgi.py              # WSGI config
-│   └── asgi.py              # ASGI config
+├── backend/                    # 🔌 Backend API
+│   ├── structurone/           # Configurações Django
+│   │   ├── settings.py        # Settings do backend
+│   │   ├── urls.py            # URLs da API
+│   │   ├── wsgi.py            # WSGI
+│   │   └── asgi.py            # ASGI
+│   ├── apps/                  # Aplicações Django
+│   │   ├── core/           # Core app
+│   │   ├── core/                # Core app
+│   │   ├── tenants/           # Multi-tenant
+│   │   ├── projects/          # API: /api/projects/
+│   │   ├── investors/         # API: /api/investors/
+│   │   ├── financial/         # API: /api/financial/
+│   │   ├── documents/         # API: /api/documents/
+│   │   └── updates/           # API: /api/updates/
+│   ├── manage.py              # Django management
+│   ├── requirements.txt        # Dependências Python
+│   ├── static/                 # Arquivos estáticos
+│   ├── media/                  # Arquivos de mídia
+│   └── locale/                 # Traduções i18n
 │
-├── apps/                     # Aplicações Django
-│   ├── core/                # Core app
-│   │   ├── urls.py         # API URLs
-│   │   ├── views.py        # API Views
-│   │   ├── frontend_urls.py # Frontend URLs (Django templates)
-│   │   └── frontend_views.py # Frontend Views (Django templates)
-│   │
-│   ├── admin/               # Painel Admin Customizado
-│   │   ├── urls.py         # Admin URLs
-│   │   ├── views.py        # Admin Views
-│   │   └── admin.py        # Admin customization
-│   │
-│   ├── tenants/             # Multi-tenant
-│   ├── projects/            # Gestão de Projetos
-│   │   ├── urls.py         # API: /api/projects/
-│   │   └── views.py        # API Views
-│   │
-│   ├── investors/           # Portal do Investidor
-│   │   ├── urls.py         # API: /api/investors/
-│   │   └── views.py        # API Views
-│   │
-│   ├── financial/           # Gestão Financeira
-│   │   ├── urls.py         # API: /api/financial/
-│   │   └── views.py        # API Views
-│   │
-│   ├── documents/           # Upload de Documentos
-│   │   ├── urls.py         # API: /api/documents/
-│   │   └── views.py        # API Views
-│   │
-│   └── updates/             # Atualizações de Obra
-│       ├── urls.py         # API: /api/updates/
-│       └── views.py        # API Views
+├── admin/                      # 👨‍💼 Painel Admin
+│   ├── apps/                  # Apps do admin
+│   │   └── admin/             # App principal
+│   │       ├── urls.py        # URLs do admin
+│   │       ├── views.py       # Views do admin
+│   │       └── admin.py       # Customização Django Admin
+│   ├── templates/              # Templates do admin
+│   │   ├── base.html          # Template base
+│   │   └── dashboard.html     # Dashboard
+│   └── static/                 # Arquivos estáticos do admin
 │
-├── frontend/                 # Frontend Web (Next.js)
-│   ├── src/                 # Código fonte
-│   ├── public/              # Arquivos públicos
-│   └── package.json          # Dependências
+├── frontend/                    # 🌐 Frontend Web
+│   ├── src/                   # Código fonte (Next.js)
+│   ├── public/                # Arquivos públicos
+│   ├── package.json           # Dependências Node
+│   └── next.config.js         # Configuração Next.js
 │
-├── templates/                # Templates Django (se usar Django templates)
-│   ├── admin/               # Templates do Admin
-│   └── frontend/            # Templates do Frontend
-│
-├── static/                   # Arquivos estáticos
-├── media/                    # Arquivos de mídia
-├── locale/                   # Traduções i18n
-└── docs/                     # Documentação
+└── docs/                       # 📚 Documentação
+    ├── STRUCTURE.md           # Este arquivo
+    ├── API_ENDPOINTS.md       # Documentação da API
+    ├── ARCHITECTURE.md        # Arquitetura
+    └── DEVELOPMENT.md         # Guia de desenvolvimento
 ```
 
 ## 🔌 Backend (API)
 
 ### Localização
-- **Diretório**: `apps/*/`
+- **Diretório**: `backend/`
 - **URL Base**: `http://localhost:8000/api/`
 - **Framework**: Django REST Framework
 
-### Endpoints Principais
+### Estrutura
+```
+backend/
+├── structurone/          # Configurações Django
+├── apps/                 # Aplicações Django
+│   ├── core/            # Core app
+│   ├── tenants/         # Multi-tenant
+│   ├── projects/        # API Projects
+│   ├── investors/       # API Investors
+│   ├── financial/       # API Financial
+│   ├── documents/       # API Documents
+│   └── updates/         # API Updates
+├── manage.py             # Django management
+└── requirements.txt      # Dependências
+```
 
-#### Autenticação
-- `POST /api/auth/token/` - Obter token JWT
-- `POST /api/auth/token/refresh/` - Atualizar token
-
-#### Projetos
-- `GET /api/projects/` - Listar projetos
-- `POST /api/projects/` - Criar projeto
-- `GET /api/projects/{id}/` - Detalhes do projeto
-- `PUT /api/projects/{id}/` - Atualizar projeto
-- `DELETE /api/projects/{id}/` - Deletar projeto
-
-#### Investidores
-- `GET /api/investors/` - Listar investidores
-- `POST /api/investors/` - Criar investidor
-- `GET /api/investors/{id}/` - Detalhes do investidor
-- `GET /api/investors/{id}/investments/` - Investimentos do investidor
-
-#### Financeiro
-- `GET /api/financial/transactions/` - Listar transações
-- `POST /api/financial/transactions/` - Criar transação
-- `GET /api/financial/cashflow/` - Fluxo de caixa
-
-#### Documentos
-- `GET /api/documents/` - Listar documentos
-- `POST /api/documents/upload/` - Upload de documento
-- `GET /api/documents/{id}/` - Detalhes do documento
-
-#### Atualizações
-- `GET /api/updates/` - Listar atualizações
-- `POST /api/updates/` - Criar atualização
-- `GET /api/updates/project/{id}/` - Atualizações do projeto
-
-### Desenvolvimento Backend
-
+### Comandos
 ```bash
-# Executar servidor
+cd backend
 python manage.py runserver
-
-# Criar migrações
-python manage.py makemigrations
-
-# Aplicar migrações
-python manage.py migrate
-
-# Criar superusuário
-python manage.py createsuperuser
+# API: http://localhost:8000/api/
 ```
-
-## 🌐 Frontend (Web)
-
-### Opção 1: Next.js (Recomendado)
-
-**Localização**: `frontend/`
-
-**Características**:
-- Frontend separado do backend
-- Consome API REST do Django
-- Autenticação via JWT
-- React + Next.js
-
-**Setup**:
-```bash
-cd frontend
-npm install
-npm run dev
-# Acessa em http://localhost:3000
-```
-
-### Opção 2: Django Templates
-
-**Localização**: `templates/frontend/` e `apps/core/frontend_views.py`
-
-**Características**:
-- Frontend integrado ao Django
-- Templates server-side
-- Pode usar HTMX/Alpine.js para interatividade
-
-**URLs**: Configuradas em `apps/core/frontend_urls.py`
 
 ## 👨‍💼 Painel Admin
 
 ### Localização
-- **URL**: `http://localhost:8000/admin/`
-- **Custom Admin**: `http://localhost:8000/admin-panel/`
-- **Código**: `apps/admin/`
+- **Diretório**: `admin/`
+- **URL**: `http://localhost:8000/admin/` (Django Admin padrão)
+- **URL**: `http://localhost:8000/admin-panel/` (Custom Admin)
 
-### Funcionalidades
+### Estrutura
+```
+admin/
+├── apps/                # Apps do admin
+│   └── admin/           # App principal
+├── templates/           # Templates
+└── static/              # Arquivos estáticos
+```
 
-1. **Dashboard Admin** (`/admin-panel/`)
-   - Visão geral do sistema
-   - Estatísticas
+## 🌐 Frontend (Web)
 
-2. **Gestão de Tenants** (`/admin-panel/tenants/`)
-   - Listar todos os tenants
-   - Detalhes do tenant
-   - Criar/editar tenants
+### Localização
+- **Diretório**: `frontend/`
+- **URL**: `http://localhost:3000`
+- **Framework**: Next.js
 
-3. **Gestão de Usuários** (`/admin-panel/users/`)
-   - Listar usuários
-   - Gerenciar permissões
+### Estrutura
+```
+frontend/
+├── src/                 # Código fonte
+├── public/              # Arquivos públicos
+└── package.json         # Dependências
+```
 
-4. **Configurações** (`/admin-panel/settings/`)
-   - Configurações do sistema
-
-### Acesso
-- Requer permissão de staff (`is_staff=True`)
-- Usa Django Admin padrão + customizações
+### Comandos
+```bash
+cd frontend
+npm install
+npm run dev
+# Frontend: http://localhost:3000
+```
 
 ## 🔄 Fluxo de Dados
 
 ```
 ┌─────────────┐
-│   Frontend  │ (Next.js ou Django Templates)
+│  Frontend   │ (Next.js - frontend/)
 │  (Web App)  │
 └──────┬──────┘
        │ HTTP/REST
        │ JWT Auth
        ▼
 ┌─────────────┐
-│   Backend   │ (Django REST API)
+│   Backend   │ (Django REST - backend/)
 │     API     │
 └──────┬──────┘
        │
@@ -204,13 +147,13 @@ npm run dev
 └─────────────┘
 
 ┌─────────────┐
-│ Admin Panel │ (Django Admin)
+│ Admin Panel │ (Django Admin - admin/)
 │  (Staff)    │
 └──────┬──────┘
        │
        ▼
 ┌─────────────┐
-│   Backend   │ (Django REST API)
+│   Backend   │ (Django REST - backend/)
 │     API     │
 └─────────────┘
 ```
@@ -219,43 +162,32 @@ npm run dev
 
 ### Backend
 ```bash
-# Ativar ambiente virtual
+cd backend
+python -m venv venv
 venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-
-# Instalar dependências
 pip install -r requirements.txt
-
-# Executar servidor
 python manage.py runserver
-# API disponível em http://localhost:8000/api/
 ```
 
-### Frontend (Next.js)
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
-# Frontend disponível em http://localhost:3000
 ```
 
-### Admin Panel
-```bash
-# Acessar Django Admin
-# http://localhost:8000/admin/
+### Admin
+O admin é acessado via backend quando o servidor está rodando.
 
-# Acessar Custom Admin
-# http://localhost:8000/admin-panel/
-```
+## 📝 Notas Importantes
 
-## 📝 Próximos Passos
+1. **Cada parte é independente** - Backend, Admin e Frontend estão em pastas separadas
+2. **Backend é a fonte de verdade** - API REST que serve tanto Frontend quanto Admin
+3. **Admin pode ser integrado** - Pode rodar junto com o backend ou separado
+4. **Frontend consome API** - Next.js faz chamadas HTTP para o backend
 
-1. ✅ Estrutura criada
-2. ⏳ Implementar modelos (Models)
-3. ⏳ Implementar serializers (DRF)
-4. ⏳ Implementar viewsets completos
-5. ⏳ Setup do frontend Next.js
-6. ⏳ Customizar painel admin
-7. ⏳ Implementar autenticação JWT
-8. ⏳ Configurar multi-tenant
+## 📚 Documentação Adicional
 
+- [API Endpoints](API_ENDPOINTS.md)
+- [Arquitetura](ARCHITECTURE.md)
+- [Guia de Desenvolvimento](DEVELOPMENT.md)

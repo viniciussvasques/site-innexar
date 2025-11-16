@@ -6,118 +6,103 @@
 
 O **StructurOne** é uma plataforma SaaS desenvolvida pela **Innexar** que centraliza informações, automatiza relatórios e oferece dashboards intuitivos para cada cliente, garantindo confiança e eficiência na gestão de obras e investimentos.
 
-## 🚀 Funcionalidades Principais
+## 🏗️ Estrutura do Projeto
 
-- **Multi-tenant**: Cada cliente possui sua própria estrutura, dados e dashboard isolados
-- **Gestão de Projetos**: Cadastro e acompanhamento de empreendimentos
-- **Portal do Investidor**: Acompanhamento em tempo real de investimentos
-- **Gestão Financeira**: Entradas, saídas, fluxo de caixa e orçamentos
-- **Documentos**: Upload e gestão de contratos, notas fiscais e comprovantes
-- **Atualizações de Obra**: Fotos, vídeos e percentuais de conclusão
-- **Relatórios Automáticos**: Relatórios auditáveis e automatizados
-- **Internacionalização**: Suporte para Português, Inglês e Espanhol
-
-## 🏗️ Arquitetura
-
-O projeto está **separado em 3 partes principais**:
+O projeto está **organizado em 3 partes principais**, cada uma em sua própria pasta:
 
 ### 1. 🔌 Backend (API)
+- **Localização**: `backend/`
 - **Framework**: Django REST Framework
 - **URL**: `http://localhost:8000/api/`
-- **Localização**: `apps/*/`
-- **Autenticação**: JWT
+- **Documentação**: [backend/README.md](backend/README.md)
 
-### 2. 🌐 Frontend (Web)
-- **Opção 1**: Next.js (recomendado) - `frontend/`
-- **Opção 2**: Django Templates - `templates/frontend/`
-- **URL**: `http://localhost:3000` (Next.js) ou integrado ao Django
-
-### 3. 👨‍💼 Painel Admin
+### 2. 👨‍💼 Painel Admin
+- **Localização**: `admin/`
 - **Framework**: Django Admin customizado
-- **URL**: `http://localhost:8000/admin/` (Django Admin padrão)
-- **URL**: `http://localhost:8000/admin-panel/` (Custom Admin)
-- **Localização**: `apps/admin/`
+- **URL**: `http://localhost:8000/admin/`
+- **Documentação**: [admin/README.md](admin/README.md)
+
+### 3. 🌐 Frontend (Web)
+- **Localização**: `frontend/`
+- **Framework**: Next.js
+- **URL**: `http://localhost:3000`
+- **Documentação**: [frontend/README.md](frontend/README.md)
 
 ```
 structurone/
-├── structurone/          # Configurações Django
-├── apps/                 # Aplicações Django
-│   ├── core/            # Core app (API + Frontend URLs)
-│   ├── admin/           # Painel Admin Customizado
-│   ├── tenants/         # Multi-tenant
-│   ├── projects/        # API: /api/projects/
-│   ├── investors/       # API: /api/investors/
-│   ├── financial/       # API: /api/financial/
-│   ├── documents/       # API: /api/documents/
-│   └── updates/         # API: /api/updates/
-├── frontend/             # Frontend Next.js (quando implementado)
-├── templates/            # Templates Django
-│   ├── admin/           # Templates do Admin
-│   └── frontend/        # Templates do Frontend
-├── static/               # Arquivos estáticos
-├── media/                # Arquivos de mídia
+├── backend/              # Backend API (Django REST)
+│   ├── structurone/     # Configurações Django
+│   ├── apps/            # Aplicações Django
+│   ├── manage.py        # Django management
+│   └── requirements.txt # Dependências Python
+│
+├── admin/                # Painel Admin
+│   ├── apps/            # Apps do admin
+│   └── templates/       # Templates do admin
+│
+├── frontend/             # Frontend Web (Next.js)
+│   ├── src/             # Código fonte
+│   ├── public/          # Arquivos públicos
+│   └── package.json     # Dependências Node
+│
 └── docs/                 # Documentação
 ```
 
-📖 **Documentação completa**: Veja [docs/STRUCTURE.md](docs/STRUCTURE.md)
+## 🚀 Início Rápido
 
-## 🛠️ Tecnologias
-
-- **Backend**: Django 5.0+, Python 3.11+
-- **API**: Django REST Framework
-- **Database**: PostgreSQL (multi-tenant)
-- **Authentication**: JWT (djangorestframework-simplejwt)
-- **Multi-tenant**: django-tenants
-- **CI/CD**: GitHub Actions
-- **Frontend**: Next.js (separado) ou Django Templates
-
-## 📋 Pré-requisitos
-
-- Python >= 3.11
-- PostgreSQL >= 14.0
-- pip >= 23.0
-
-## 🚀 Instalação
-
-### Backend (API)
+### 1. Backend (API)
 
 ```bash
-# Criar ambiente virtual
+cd backend
 python -m venv venv
-
-# Ativar ambiente virtual
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Instalar dependências
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
-
-# Configurar variáveis de ambiente
 cp .env.example .env
-# Editar .env com suas configurações
-
-# Executar migrações
 python manage.py migrate
-
-# Criar superusuário
 python manage.py createsuperuser
-
-# Executar servidor de desenvolvimento
 python manage.py runserver
-# API disponível em http://localhost:8000/api/
-# Admin disponível em http://localhost:8000/admin/
+# API: http://localhost:8000/api/
 ```
 
-### Frontend (Next.js - quando implementado)
+### 2. Frontend (Web)
 
 ```bash
 cd frontend
 npm install
 npm run dev
-# Frontend disponível em http://localhost:3000
+# Frontend: http://localhost:3000
 ```
+
+### 3. Admin Panel
+
+O admin é acessado via backend:
+- Django Admin: `http://localhost:8000/admin/`
+- Admin Customizado: `http://localhost:8000/admin-panel/`
+
+## 🛠️ Tecnologias
+
+- **Backend**: Django 5.0+, Python 3.11+
+- **API**: Django REST Framework
+- **Frontend**: Next.js 14+, React, TypeScript
+- **Database**: PostgreSQL (multi-tenant)
+- **Authentication**: JWT
+- **CI/CD**: GitHub Actions
+
+## 📋 Pré-requisitos
+
+- Python >= 3.11
+- Node.js >= 18.0.0
+- PostgreSQL >= 14.0
+- npm >= 9.0.0
+
+## 📚 Documentação
+
+- [Estrutura do Projeto](docs/STRUCTURE.md)
+- [API Endpoints](docs/API_ENDPOINTS.md)
+- [Arquitetura](docs/ARCHITECTURE.md)
+- [Guia de Desenvolvimento](docs/DEVELOPMENT.md)
+- [MVP](docs/MVP.md)
 
 ## 🌍 Internacionalização
 
@@ -136,5 +121,4 @@ UNLICENSED - Propriedade da Innexar
 
 ---
 
-Para mais informações, consulte a documentação em `/docs`.
-
+Para mais informações, consulte a documentação em `/docs` ou os READMEs de cada parte do projeto.

@@ -1,5 +1,5 @@
 """
-Django settings for StructurOne project.
+Django settings for StructurOne Backend API.
 """
 import os
 from pathlib import Path
@@ -30,10 +30,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     
-    # Local apps
+    # Local apps (Backend API only - admin está em admin/)
     'apps.core',
     'apps.tenants',
-    'apps.admin',  # Admin Panel
     'apps.projects',
     'apps.investors',
     'apps.financial',
@@ -173,4 +172,3 @@ TENANT_APPS = [
     'apps.documents',
     'apps.updates',
 ]
-
