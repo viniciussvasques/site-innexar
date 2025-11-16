@@ -67,7 +67,7 @@ def test_middleware_with_header():
     
     # Teste 1: Tenant 1
     request = factory.get('/api/tenants/')
-    request.META['HTTP_HOST'] = 'localhost:8000'
+    request.META['HTTP_HOST'] = 'localhost:8010'
     request.META['HTTP_X_TENANT_SLUG'] = 'empresa-abc'
     middleware.process_request(request)
     
@@ -78,7 +78,7 @@ def test_middleware_with_header():
     
     # Teste 2: Tenant 2
     request = factory.get('/api/tenants/')
-    request.META['HTTP_HOST'] = 'localhost:8000'
+    request.META['HTTP_HOST'] = 'localhost:8010'
     request.META['HTTP_X_TENANT_SLUG'] = 'construtora-xyz'
     middleware.process_request(request)
     
@@ -89,7 +89,7 @@ def test_middleware_with_header():
     
     # Teste 3: Tenant inexistente
     request = factory.get('/api/tenants/')
-    request.META['HTTP_HOST'] = 'localhost:8000'
+    request.META['HTTP_HOST'] = 'localhost:8010'
     request.META['HTTP_X_TENANT_SLUG'] = 'inexistente'
     middleware.process_request(request)
     
@@ -108,7 +108,7 @@ def test_middleware_with_subdomain():
     
     # Teste 1: Subdomínio tenant 1
     request = factory.get('/api/tenants/')
-    request.META['HTTP_HOST'] = 'empresa-abc.localhost:8000'
+    request.META['HTTP_HOST'] = 'empresa-abc.localhost:8010'
     middleware.process_request(request)
     
     if hasattr(request, 'tenant') and request.tenant:
@@ -118,7 +118,7 @@ def test_middleware_with_subdomain():
     
     # Teste 2: Subdomínio tenant 2
     request = factory.get('/api/tenants/')
-    request.META['HTTP_HOST'] = 'construtora-xyz.localhost:8000'
+    request.META['HTTP_HOST'] = 'construtora-xyz.localhost:8010'
     middleware.process_request(request)
     
     if hasattr(request, 'tenant') and request.tenant:
@@ -128,7 +128,7 @@ def test_middleware_with_subdomain():
     
     # Teste 3: Sem subdomínio (admin)
     request = factory.get('/admin/')
-    request.META['HTTP_HOST'] = 'localhost:8000'
+    request.META['HTTP_HOST'] = 'localhost:8010'
     middleware.process_request(request)
     
     if hasattr(request, 'tenant') and request.tenant:
@@ -141,15 +141,15 @@ def print_test_commands():
     """Imprime comandos para testar manualmente"""
     print("\n📋 Comandos para testar manualmente:")
     print("\n1. Testar com cURL (header):")
-    print("   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8000/api/tenants/")
-    print("   curl -H \"X-Tenant-Slug: construtora-xyz\" http://localhost:8000/api/tenants/")
+    print("   curl -H \"X-Tenant-Slug: empresa-abc\" http://localhost:8010/api/tenants/")
+    print("   curl -H \"X-Tenant-Slug: construtora-xyz\" http://localhost:8010/api/tenants/")
     
     print("\n2. Testar com cURL (subdomínio - requer /etc/hosts):")
-    print("   curl http://empresa-abc.localhost:8000/api/tenants/")
-    print("   curl http://construtora-xyz.localhost:8000/api/tenants/")
+    print("   curl http://empresa-abc.localhost:8010/api/tenants/")
+    print("   curl http://construtora-xyz.localhost:8010/api/tenants/")
     
     print("\n3. Testar no navegador (JavaScript console):")
-    print("   fetch('http://localhost:8000/api/tenants/', {")
+    print("   fetch('http://localhost:8010/api/tenants/', {")
     print("     headers: { 'X-Tenant-Slug': 'empresa-abc' }")
     print("   }).then(r => r.json()).then(console.log)")
     

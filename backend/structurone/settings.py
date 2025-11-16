@@ -154,7 +154,7 @@ REST_FRAMEWORK = {
 # CORS
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://localhost:3001',
+    default='http://localhost:3010,http://localhost:3011',
     cast=Csv()
 )
 

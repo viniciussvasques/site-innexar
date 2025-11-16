@@ -61,7 +61,7 @@ structurone/
 
 ### Localização
 - **Diretório**: `backend/`
-- **URL Base**: `http://localhost:8000/api/`
+- **URL Base**: `http://localhost:8010/api/`
 - **Framework**: Django REST Framework
 
 ### Estrutura
@@ -84,15 +84,15 @@ backend/
 ```bash
 cd backend
 python manage.py runserver
-# API: http://localhost:8000/api/
+# API: http://localhost:8010/api/
 ```
 
 ## 👨‍💼 Painel Admin
 
 ### Localização
 - **Diretório**: `admin/`
-- **URL**: `http://localhost:8000/admin/` (Django Admin padrão)
-- **URL**: `http://localhost:8000/admin-panel/` (Custom Admin)
+- **URL**: `http://localhost:8010/admin/` (Django Admin padrão)
+- **URL**: `http://localhost:8010/admin-panel/` (Custom Admin)
 
 ### Estrutura
 ```
@@ -107,7 +107,7 @@ admin/
 
 ### Localização
 - **Diretório**: `frontend/`
-- **URL**: `http://localhost:3000`
+- **URL**: `http://localhost:3010`
 - **Framework**: Next.js
 
 ### Estrutura
@@ -123,7 +123,7 @@ frontend/
 cd frontend
 npm install
 npm run dev
-# Frontend: http://localhost:3000
+# Frontend: http://localhost:3010
 ```
 
 ## 🔄 Fluxo de Dados

@@ -58,17 +58,17 @@ print(f"Tenant 2 criado: {tenant2.slug}")
 
 ```bash
 # Testar com tenant 1
-curl -H "X-Tenant-Slug: empresa-abc" http://localhost:8000/api/tenants/
+curl -H "X-Tenant-Slug: empresa-abc" http://localhost:8010/api/tenants/
 
 # Testar com tenant 2
-curl -H "X-Tenant-Slug: construtora-xyz" http://localhost:8000/api/tenants/
+curl -H "X-Tenant-Slug: construtora-xyz" http://localhost:8010/api/tenants/
 ```
 
 ### Passo 3: Testar no Navegador (JavaScript)
 
 ```javascript
 // No console do navegador (F12)
-fetch('http://localhost:8000/api/tenants/', {
+fetch('http://localhost:8010/api/tenants/', {
   headers: {
     'X-Tenant-Slug': 'empresa-abc'
   }
@@ -124,9 +124,9 @@ Adicionar:
 
 ```bash
 # Acessar no navegador
-http://empresa-abc.localhost:8000/api/tenants/
-http://construtora-xyz.localhost:8000/api/tenants/
-http://admin.localhost:8000/admin/
+http://empresa-abc.localhost:8010/api/tenants/
+http://construtora-xyz.localhost:8010/api/tenants/
+http://admin.localhost:8010/admin/
 ```
 
 ### Ajustar Middleware (se necessário)
@@ -145,7 +145,7 @@ Se usar `.localhost`, pode precisar ajustar o middleware:
 ### Postman
 
 1. Criar nova requisição
-2. URL: `http://localhost:8000/api/tenants/`
+2. URL: `http://localhost:8010/api/tenants/`
 3. Headers:
    - Key: `X-Tenant-Slug`
    - Value: `empresa-abc`
@@ -153,7 +153,7 @@ Se usar `.localhost`, pode precisar ajustar o middleware:
 ### Insomnia
 
 1. Nova requisição GET
-2. URL: `http://localhost:8000/api/tenants/`
+2. URL: `http://localhost:8010/api/tenants/`
 3. Headers → Add Header:
    - Name: `X-Tenant-Slug`
    - Value: `empresa-abc`
@@ -204,14 +204,14 @@ middleware = TenantMiddleware(lambda r: None)
 
 # Teste 1: Header
 request = factory.get('/api/tenants/')
-request.META['HTTP_HOST'] = 'localhost:8000'
+request.META['HTTP_HOST'] = 'localhost:8010'
 request.META['HTTP_X_TENANT_SLUG'] = 'empresa-abc'
 middleware.process_request(request)
 print(f"✅ Middleware detectou: {request.tenant.slug if hasattr(request, 'tenant') and request.tenant else 'None'}")
 
 # Teste 2: Subdomínio
 request = factory.get('/api/tenants/')
-request.META['HTTP_HOST'] = 'empresa-abc.localhost:8000'
+request.META['HTTP_HOST'] = 'empresa-abc.localhost:8010'
 middleware.process_request(request)
 print(f"✅ Subdomínio detectado: {request.tenant.slug if hasattr(request, 'tenant') and request.tenant else 'None'}")
 
@@ -233,16 +233,16 @@ python test_tenant.py
 
 ```bash
 # Sem header (deve retornar erro ou vazio)
-curl http://localhost:8000/api/tenants/
+curl http://localhost:8010/api/tenants/
 
 # Com header (deve retornar dados do tenant)
-curl -H "X-Tenant-Slug: empresa-abc" http://localhost:8000/api/tenants/
+curl -H "X-Tenant-Slug: empresa-abc" http://localhost:8010/api/tenants/
 ```
 
 ### 2. Verificar no Django Admin
 
 ```bash
-# Acessar http://localhost:8000/admin/
+# Acessar http://localhost:8010/admin/
 # Verificar se tenants foram criados
 ```
 
@@ -282,7 +282,7 @@ print(f"Tenant 2 vê: {TestModel.objects.filter(tenant=tenant2).count()} objetos
 
 **Solução**: Verificar se o header está correto:
 ```bash
-curl -v -H "X-Tenant-Slug: empresa-abc" http://localhost:8000/api/tenants/
+curl -v -H "X-Tenant-Slug: empresa-abc" http://localhost:8010/api/tenants/
 ```
 
 ### Problema: /etc/hosts não funciona

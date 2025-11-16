@@ -93,7 +93,7 @@ server {
     server_name structurone.com admin.structurone.com;
     
     location / {
-        proxy_pass http://localhost:8000;
+        proxy_pass http://localhost:8010;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -104,7 +104,7 @@ server {
     server_name *.structurone.com;
     
     location / {
-        proxy_pass http://localhost:8000;
+        proxy_pass http://localhost:8010;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -130,7 +130,7 @@ TENANT_DOMAIN = 'structurone.com'
 
 ```bash
 # Usar header X-Tenant-Slug
-curl -H "X-Tenant-Slug: cliente1" http://localhost:8000/api/projects/
+curl -H "X-Tenant-Slug: cliente1" http://localhost:8010/api/projects/
 ```
 
 ### Opção 2: /etc/hosts
@@ -140,7 +140,7 @@ curl -H "X-Tenant-Slug: cliente1" http://localhost:8000/api/projects/
 127.0.0.1 cliente1.localhost
 127.0.0.1 cliente2.localhost
 
-# Acessar: http://cliente1.localhost:8000
+# Acessar: http://cliente1.localhost:8010
 ```
 
 ## 📈 Escalabilidade Futura
@@ -160,7 +160,7 @@ A migração é facilitada pela abstração do `TenantMixin`.
    ↓
 2. Nginx recebe requisição
    ↓
-3. Nginx encaminha para Django (localhost:8000)
+3. Nginx encaminha para Django (localhost:8010)
    ↓
 4. TenantMiddleware detecta subdomínio "cliente1"
    ↓

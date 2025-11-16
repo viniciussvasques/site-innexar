@@ -7,7 +7,7 @@ echo "================================"
 echo ""
 
 # Verificar se servidor está rodando
-if ! curl -s http://localhost:8000/api/ > /dev/null; then
+if ! curl -s http://localhost:8010/api/ > /dev/null; then
     echo "❌ Servidor Django não está rodando!"
     echo "   Execute: python manage.py runserver"
     exit 1
@@ -18,7 +18,7 @@ echo ""
 
 # Teste 1: Sem header (deve falhar ou retornar vazio)
 echo "📋 Teste 1: Requisição sem header"
-echo "   curl http://localhost:8000/api/tenants/"
+echo "   curl http://localhost:8010/api/tenants/"
 curl -s http://localhost:8000/api/tenants/ | head -20
 echo ""
 echo ""

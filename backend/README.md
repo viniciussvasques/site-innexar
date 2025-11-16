@@ -36,7 +36,7 @@ python manage.py runserver
 
 ## 📡 API Endpoints
 
-Base URL: `http://localhost:8000/api/`
+Base URL: `http://localhost:8010/api/`
 
 ### Autenticação
 - `POST /api/auth/token/` - Obter token JWT

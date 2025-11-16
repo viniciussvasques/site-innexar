@@ -18,7 +18,7 @@ A Record: *.structurone.com -> IP_DO_VPS (wildcard para subdomínios)
 
 # Upstream para Django
 upstream django_backend {
-    server 127.0.0.1:8000;
+    server 127.0.0.1:8010;
 }
 
 # Servidor principal (admin/API)
@@ -106,7 +106,7 @@ pip install gunicorn
 
 # Executar
 gunicorn structurone.wsgi:application \
-    --bind 127.0.0.1:8000 \
+    --bind 127.0.0.1:8010 \
     --workers 4 \
     --timeout 120
 ```
@@ -126,7 +126,7 @@ Group=www-data
 WorkingDirectory=/path/to/structurone/backend
 Environment="PATH=/path/to/venv/bin"
 ExecStart=/path/to/venv/bin/gunicorn structurone.wsgi:application \
-    --bind 127.0.0.1:8000 \
+    --bind 127.0.0.1:8010 \
     --workers 4 \
     --timeout 120
 

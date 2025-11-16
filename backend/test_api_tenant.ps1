@@ -7,7 +7,7 @@ Write-Host ""
 
 # Verificar se servidor está rodando
 try {
-    $response = Invoke-WebRequest -Uri "http://localhost:8000/api/" -UseBasicParsing -TimeoutSec 2
+    $response = Invoke-WebRequest -Uri "http://localhost:8010/api/" -UseBasicParsing -TimeoutSec 2
     Write-Host "✅ Servidor está rodando" -ForegroundColor Green
 } catch {
     Write-Host "❌ Servidor Django não está rodando!" -ForegroundColor Red
@@ -19,7 +19,7 @@ Write-Host ""
 
 # Teste 1: Sem header
 Write-Host "📋 Teste 1: Requisição sem header" -ForegroundColor Yellow
-Write-Host "   Invoke-WebRequest http://localhost:8000/api/tenants/" -ForegroundColor Gray
+Write-Host "   Invoke-WebRequest http://localhost:8010/api/tenants/" -ForegroundColor Gray
 try {
     $response = Invoke-WebRequest -Uri "http://localhost:8000/api/tenants/" -UseBasicParsing
     Write-Host $response.Content.Substring(0, [Math]::Min(200, $response.Content.Length))
@@ -30,7 +30,7 @@ Write-Host ""
 
 # Teste 2: Com header tenant 1
 Write-Host "📋 Teste 2: Requisição com header X-Tenant-Slug: empresa-abc" -ForegroundColor Yellow
-Write-Host "   Invoke-WebRequest -Headers @{'X-Tenant-Slug'='empresa-abc'} http://localhost:8000/api/tenants/" -ForegroundColor Gray
+Write-Host "   Invoke-WebRequest -Headers @{'X-Tenant-Slug'='empresa-abc'} http://localhost:8010/api/tenants/" -ForegroundColor Gray
 try {
     $headers = @{'X-Tenant-Slug'='empresa-abc'}
     $response = Invoke-WebRequest -Uri "http://localhost:8000/api/tenants/" -Headers $headers -UseBasicParsing
@@ -42,7 +42,7 @@ Write-Host ""
 
 # Teste 3: Com header tenant 2
 Write-Host "📋 Teste 3: Requisição com header X-Tenant-Slug: construtora-xyz" -ForegroundColor Yellow
-Write-Host "   Invoke-WebRequest -Headers @{'X-Tenant-Slug'='construtora-xyz'} http://localhost:8000/api/tenants/" -ForegroundColor Gray
+Write-Host "   Invoke-WebRequest -Headers @{'X-Tenant-Slug'='construtora-xyz'} http://localhost:8010/api/tenants/" -ForegroundColor Gray
 try {
     $headers = @{'X-Tenant-Slug'='construtora-xyz'}
     $response = Invoke-WebRequest -Uri "http://localhost:8000/api/tenants/" -Headers $headers -UseBasicParsing

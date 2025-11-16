@@ -18,7 +18,7 @@ cp .env.example .env.local
 # Executar em desenvolvimento
 npm run dev
 
-# Acessar em http://localhost:3001
+# Acessar em http://localhost:3011
 ```
 
 ## 📁 Estrutura
@@ -42,7 +42,7 @@ admin/
 
 O admin consome a API REST do backend:
 
-- **Base URL**: `http://localhost:8000/api/`
+- **Base URL**: `http://localhost:8010/api/`
 - **Autenticação**: JWT tokens (a implementar)
 - **CORS**: Configurado no backend
 
