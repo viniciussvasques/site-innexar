@@ -1,0 +1,10 @@
+{% extends 'frontend/base.html' %}
+
+{% block content %}
+<div class="home">
+    <h2>Welcome to StructurOne</h2>
+    <p>Plataforma SaaS para gestão de empreendimentos e captação de investimentos</p>
+    <a href="{% url 'frontend:login' %}" class="btn btn-primary">Login</a>
+</div>
+{% endblock %}
+

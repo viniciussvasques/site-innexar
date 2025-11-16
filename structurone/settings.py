@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local apps
     'apps.core',
     'apps.tenants',
+    'apps.admin',  # Admin Panel
     'apps.projects',
     'apps.investors',
     'apps.financial',
