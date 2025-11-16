@@ -16,6 +16,10 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
+# Multi-tenant configuration
+TENANT_DOMAIN = config('TENANT_DOMAIN', default='structurone.com')
+TENANT_SUBDOMAIN_REQUIRED = config('TENANT_SUBDOMAIN_REQUIRED', default=False, cast=bool)
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,6 +49,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'apps.tenants.middleware.TenantMiddleware',  # Tenant middleware (deve vir antes do CommonMiddleware)
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
