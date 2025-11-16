@@ -19,7 +19,7 @@ echo ""
 # Teste 1: Sem header (deve falhar ou retornar vazio)
 echo "📋 Teste 1: Requisição sem header"
 echo "   curl http://localhost:8010/api/tenants/"
-curl -s http://localhost:8000/api/tenants/ | head -20
+curl -s http://localhost:8010/api/tenants/ | head -20
 echo ""
 echo ""
 
