@@ -74,11 +74,15 @@ npm run dev
 # Frontend: http://localhost:3000
 ```
 
-### 3. Admin Panel
+### 3. Admin Panel (Next.js)
 
-O admin é acessado via backend:
-- Django Admin: `http://localhost:8000/admin/`
-- Admin Customizado: `http://localhost:8000/admin-panel/`
+```bash
+cd admin
+npm install
+cp .env.example .env.local
+npm run dev
+# Admin: http://localhost:3001
+```
 
 ## 🛠️ Tecnologias
 
