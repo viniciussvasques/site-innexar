@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     build-essential \
     libpq-dev \
+    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
 # Copiar requirements
@@ -41,5 +42,6 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["gunicorn", "structurone.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120"]
+# Comando padrão (pode ser sobrescrito no docker-compose)
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 

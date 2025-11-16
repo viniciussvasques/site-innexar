@@ -28,6 +28,7 @@ services:
       dockerfile: Dockerfile
     container_name: structurone_backend
     command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: /docker-entrypoint.sh
     volumes:
       - ./backend:/app
       - backend_static:/app/staticfiles
