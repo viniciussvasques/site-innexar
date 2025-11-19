@@ -36,16 +36,20 @@ export default async function RootLayout({
   const { generateStructuredData } = await import('@/lib/seo')
   const structuredData = generateStructuredData(locale, 'home')
 
+  // Serializar structured data de forma segura
+  const organizationJson = JSON.stringify(structuredData.organization)
+  const websiteJson = JSON.stringify(structuredData.website)
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.organization) }}
+          dangerouslySetInnerHTML={{ __html: organizationJson }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.website) }}
+          dangerouslySetInnerHTML={{ __html: websiteJson }}
         />
       </head>
       <body className={inter.className}>
