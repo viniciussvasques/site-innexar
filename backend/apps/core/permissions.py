@@ -11,28 +11,32 @@ class IsTenantOwner(permissions.BasePermission):
     """
     def has_permission(self, request, view):
         """Verifica se o usuário tem permissão"""
-        tenant = getattr(request, 'tenant', None)
-        if not tenant:
+        # Verifica se o usuário está autenticado
+        if not request.user or not request.user.is_authenticated:
             return False
         
-        # Verifica se o usuário pertence ao tenant
-        # TODO: Implementar quando modelo User estiver pronto
-        # user_tenant = request.user.tenant
-        # return user_tenant == tenant
+        # Verifica se o usuário tem tenant
+        if not hasattr(request.user, 'tenant') or not request.user.tenant:
+            return False
         
-        # Por enquanto, permite se houver tenant na requisição
+        # Usuário autenticado com tenant tem permissão
         return True
     
     def has_object_permission(self, request, view, obj):
         """Verifica permissão no objeto"""
-        tenant = getattr(request, 'tenant', None)
-        if not tenant:
+        # Verifica se o usuário está autenticado
+        if not request.user or not request.user.is_authenticated:
             return False
         
-        # Verifica se o objeto pertence ao tenant
-        if hasattr(obj, 'tenant'):
-            return obj.tenant == tenant
+        # Verifica se o usuário tem tenant
+        if not hasattr(request.user, 'tenant') or not request.user.tenant:
+            return False
         
+        # Verifica se o objeto pertence ao tenant do usuário
+        if hasattr(obj, 'tenant'):
+            return obj.tenant == request.user.tenant
+        
+        # Se objeto não tem tenant, permite (ex: Plan)
         return True
 
 

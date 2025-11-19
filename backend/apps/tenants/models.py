@@ -8,6 +8,11 @@ from django.core.validators import RegexValidator
 from apps.core.models import TimeStampedModel
 
 
+def get_default_subscription_start_date():
+    """Retorna a data atual para subscription_start_date"""
+    return timezone.now().date()
+
+
 class Tenant(TimeStampedModel):
     """
     Tenant model - represents a client/company in the multi-tenant system
@@ -64,7 +69,7 @@ class Tenant(TimeStampedModel):
         help_text='Plano de assinatura'
     )
     subscription_start_date = models.DateField(
-        default=timezone.now,
+        default=get_default_subscription_start_date,
         verbose_name='Data de Início',
         help_text='Data de início da assinatura'
     )
@@ -89,6 +94,121 @@ class Tenant(TimeStampedModel):
         null=True,
         verbose_name='Observações',
         help_text='Observações internas sobre o tenant'
+    )
+    stripe_customer_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name='Stripe Customer ID',
+        help_text='Identificador do cliente no Stripe'
+    )
+    asaas_customer_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name='Asaas Customer ID',
+        help_text='Identificador do cliente no Asaas'
+    )
+    
+    # Internacionalização
+    language = models.CharField(
+        max_length=10,
+        choices=[
+            ('pt-br', 'Português (Brasil)'),
+            ('en-us', 'English (US)'),
+            ('es-es', 'Español (España)'),
+        ],
+        default='pt-br',
+        verbose_name='Idioma',
+        help_text='Idioma padrão do tenant'
+    )
+    
+    country = models.CharField(
+        max_length=2,
+        choices=[
+            ('BR', 'Brasil'),
+            ('US', 'Estados Unidos'),
+            ('MX', 'México'),
+            ('ES', 'Espanha'),
+            ('AR', 'Argentina'),
+            ('CO', 'Colômbia'),
+            ('CL', 'Chile'),
+            ('PE', 'Peru'),
+            ('EC', 'Equador'),
+            ('VE', 'Venezuela'),
+            ('UY', 'Uruguai'),
+            ('PY', 'Paraguai'),
+            ('BO', 'Bolívia'),
+            ('CR', 'Costa Rica'),
+            ('PA', 'Panamá'),
+            ('GT', 'Guatemala'),
+            ('DO', 'República Dominicana'),
+            ('CU', 'Cuba'),
+            ('HN', 'Honduras'),
+            ('NI', 'Nicarágua'),
+            ('SV', 'El Salvador'),
+        ],
+        default='BR',
+        verbose_name='País',
+        help_text='País do tenant'
+    )
+    
+    currency = models.CharField(
+        max_length=3,
+        choices=[
+            ('BRL', 'Real Brasileiro (R$)'),
+            ('USD', 'Dólar Americano ($)'),
+            ('EUR', 'Euro (€)'),
+            ('MXN', 'Peso Mexicano (MX$)'),
+            ('ARS', 'Peso Argentino ($)'),
+            ('COP', 'Peso Colombiano ($)'),
+            ('CLP', 'Peso Chileno ($)'),
+            ('PEN', 'Sol Peruano (S/)'),
+            ('UYU', 'Peso Uruguaio ($U)'),
+            ('PYG', 'Guarani Paraguaio (₲)'),
+            ('BOB', 'Boliviano (Bs.)'),
+            ('CRC', 'Colón Costarriquenho (₡)'),
+            ('DOP', 'Peso Dominicano (RD$)'),
+            ('CUP', 'Peso Cubano ($)'),
+            ('GTQ', 'Quetzal Guatemalteco (Q)'),
+            ('HNL', 'Lempira Hondurenha (L)'),
+            ('NIO', 'Córdoba Nicaraguense (C$)'),
+            ('PAB', 'Balboa Panamenho (B/.)'),
+            ('SVC', 'Colón Salvadorenho (₡)'),
+        ],
+        default='BRL',
+        verbose_name='Moeda',
+        help_text='Moeda padrão do tenant'
+    )
+    
+    timezone = models.CharField(
+        max_length=50,
+        default='America/Sao_Paulo',
+        verbose_name='Fuso Horário',
+        help_text='Fuso horário do tenant'
+    )
+    
+    date_format = models.CharField(
+        max_length=20,
+        choices=[
+            ('DD/MM/YYYY', 'DD/MM/YYYY'),
+            ('MM/DD/YYYY', 'MM/DD/YYYY'),
+            ('YYYY-MM-DD', 'YYYY-MM-DD'),
+        ],
+        default='DD/MM/YYYY',
+        verbose_name='Formato de Data',
+        help_text='Formato de exibição de datas'
+    )
+    
+    number_format = models.CharField(
+        max_length=20,
+        choices=[
+            ('1.234,56', '1.234,56 (Brasil/Espanha)'),
+            ('1,234.56', '1,234.56 (EUA)'),
+        ],
+        default='1.234,56',
+        verbose_name='Formato de Número',
+        help_text='Formato de exibição de números decimais'
     )
 
     class Meta:

@@ -43,7 +43,7 @@ services:
       - DB_HOST=db
       - DB_PORT=5432
       - SECRET_KEY=${SECRET_KEY:-django-insecure-dev-key-change-in-production}
-      - CORS_ALLOWED_ORIGINS=http://localhost:3010,http://localhost:3011
+      - CORS_ALLOWED_ORIGINS=http://localhost:3007,http://localhost:3010,http://localhost:3011
       - DJANGO_ENV=development
     depends_on:
       db:

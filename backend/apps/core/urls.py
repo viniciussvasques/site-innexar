@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-# Register viewsets here
+router.register(r'auth', views.AuthViewSet, basename='auth')
+router.register(r'password-reset', views.PasswordResetViewSet, basename='password-reset')
+router.register(r'onboarding', views.OnboardingViewSet, basename='onboarding')
+router.register(r'users', views.UserViewSet, basename='user')
 
 urlpatterns = [
     path('', views.api_root, name='api-root'),

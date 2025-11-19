@@ -9,6 +9,8 @@ from .models import Tenant
 class TenantSerializer(serializers.ModelSerializer):
     """Serializer para Tenant"""
     is_subscription_active = serializers.ReadOnlyField()
+    subscription_start_date = serializers.DateField(required=False, allow_null=True)
+    subscription_end_date = serializers.DateField(required=False, allow_null=True)
     
     class Meta:
         model = Tenant

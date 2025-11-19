@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './admin.css';
+import AdminLayout from '@/components/AdminLayout';
 
 export const metadata: Metadata = {
   title: 'StructurOne Admin - Painel Administrativo',
@@ -13,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <AdminLayout>{children}</AdminLayout>
+      </body>
     </html>
   );
 }

@@ -2,6 +2,7 @@
 Django settings for StructurOne Backend API.
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 from decouple import config, Csv
 
@@ -31,12 +32,14 @@ INSTALLED_APPS = [
     
     # Third party
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'django_filters',
     
     # Local apps (Backend API only - admin está em admin/)
     'apps.core',
     'apps.tenants',
+    'apps.billing',  # Billing e pagamentos
     'apps.projects',
     'apps.investors',
     'apps.financial',
@@ -134,10 +137,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom User Model
+AUTH_USER_MODEL = 'core.User'
+
 # REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'apps.core.authentication.JWTAuthenticationWithBlacklist',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -149,14 +156,98 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ],
+    # Throttling - Desabilitado em desenvolvimento, habilitado em produção
+    'DEFAULT_THROTTLE_CLASSES': [] if DEBUG else [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '1000/hour',  # Aumentado para desenvolvimento
+        'user': '10000/hour',  # Aumentado para desenvolvimento
+        'login': '100/minute',  # Aumentado para desenvolvimento (era 5/minute)
+        'password_reset': '10/hour',  # Aumentado para desenvolvimento
+    },
+}
+
+# JWT Settings
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+    
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    
+    'JTI_CLAIM': 'jti',
+    
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
 # CORS
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3010,http://localhost:3011',
-    cast=Csv()
-)
+# Ler de variável de ambiente ou usar default (incluindo porta 3007 do frontend)
+cors_origins_env = os.environ.get('CORS_ALLOWED_ORIGINS', None)
+if cors_origins_env:
+    CORS_ALLOWED_ORIGINS = [
+        origin.strip() for origin in cors_origins_env.split(',') if origin.strip()
+    ]
+else:
+    # Default: incluir todas as portas usadas (frontend 3007, admin 3011, frontend alt 3010)
+    CORS_ALLOWED_ORIGINS = [
+        'http://localhost:3007',  # Frontend principal
+        'http://localhost:3010',  # Frontend alternativo
+        'http://localhost:3011',  # Admin Panel
+    ]
+
+# CORS additional settings
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False  # Segurança: apenas origens permitidas
+CORS_ALLOWED_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+CORS_ALLOWED_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# Frontend URL (para links em emails)
+FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3010')
+
+# Billing - Stripe
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY', default='')
+STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY', default='')
+STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='')
+
+# Billing - Asaas (Brasil)
+ASAAS_API_KEY = config('ASAAS_API_KEY', default='')
+ASAAS_ENVIRONMENT = config('ASAAS_ENVIRONMENT', default='sandbox')
+ASAAS_WEBHOOK_TOKEN = config('ASAAS_WEBHOOK_TOKEN', default='')
 
 # File Upload
 FILE_UPLOAD_MAX_MEMORY_SIZE = config('FILE_UPLOAD_MAX_MEMORY_SIZE', default=10485760, cast=int)  # 10MB

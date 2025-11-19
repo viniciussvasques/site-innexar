@@ -3,12 +3,14 @@ Django>=5.0.0,<6.0.0
 djangorestframework>=3.14.0
 django-cors-headers>=4.3.0
 django-environ>=0.11.0
+django-filter>=24.0.0
 
 # Database
 psycopg2-binary>=2.9.9
 
 # Authentication
 djangorestframework-simplejwt>=5.3.0
+djangorestframework-simplejwt[token_blacklist]>=5.3.0
 django-allauth>=0.57.0
 
 # Multi-tenant
@@ -36,4 +38,8 @@ pytest-cov>=4.1.0
 # Production
 gunicorn>=21.2.0
 whitenoise>=6.6.0
+
+# Payment Gateways
+stripe>=7.0.0
+requests>=2.31.0  # Para Asaas (não tem SDK oficial)
 

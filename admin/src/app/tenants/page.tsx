@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8010/api';
+import { tenantsService } from '@/lib/api';
 
 interface Tenant {
   id: number;
@@ -30,13 +28,38 @@ export default function TenantsPage() {
   const fetchTenants = async () => {
     try {
       setLoading(true);
-      // TODO: Adicionar autenticação JWT
-      const response = await axios.get(`${API_URL}/tenants/`);
-      setTenants(response.data.results || response.data);
+      const data = await tenantsService.list();
+      // DRF pode retornar lista direta ou paginada
+      let tenantsList = [];
+      if (Array.isArray(data)) {
+        tenantsList = data;
+      } else if (data.results && Array.isArray(data.results)) {
+        tenantsList = data.results;
+      } else if (data && typeof data === 'object') {
+        // Se for um objeto único, converter para array
+        tenantsList = [data];
+      }
+      
+      // Filtrar tenants sem ID válido e garantir que todos têm ID
+      tenantsList = tenantsList.filter(tenant => {
+        if (!tenant || tenant.id === undefined || tenant.id === null) {
+          console.warn('Tenant sem ID válido:', tenant);
+          return false;
+        }
+        return true;
+      });
+      
+      console.log('Tenants carregados:', tenantsList.length, tenantsList);
+      setTenants(tenantsList);
       setError(null);
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Erro ao carregar tenants');
+      const errorMessage = err.response?.data?.detail || 
+                          err.response?.data?.message || 
+                          err.message || 
+                          'Erro ao carregar tenants';
+      setError(errorMessage);
       console.error('Error fetching tenants:', err);
+      setTenants([]);
     } finally {
       setLoading(false);
     }
@@ -44,118 +67,135 @@ export default function TenantsPage() {
 
   const handleToggleActive = async (tenantId: number, isActive: boolean) => {
     try {
-      const endpoint = isActive ? 'deactivate' : 'activate';
-      await axios.post(`${API_URL}/tenants/${tenantId}/${endpoint}/`);
+      // Atualizar o tenant com o novo status
+      await tenantsService.update(tenantId, { is_active: !isActive });
       fetchTenants(); // Recarregar lista
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error toggling tenant status:', err);
-      alert('Erro ao alterar status do tenant');
+      alert(err.response?.data?.detail || 'Erro ao alterar status do tenant');
     }
   };
 
   if (loading) {
     return (
-      <div className="admin-container">
-        <header className="admin-header">
-          <h1>StructurOne Admin</h1>
-          <nav>
-            <Link href="/tenants">Tenants</Link>
-            <Link href="/dashboard">Dashboard</Link>
-          </nav>
-        </header>
-        <main className="admin-main">
-          <p>Carregando...</p>
-        </main>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
+        <div className="admin-spinner"></div>
       </div>
     );
   }
 
   return (
-    <div className="admin-container">
-      <header className="admin-header">
-        <h1>StructurOne Admin</h1>
-        <nav>
-          <Link href="/tenants">Tenants</Link>
-          <Link href="/dashboard">Dashboard</Link>
-        </nav>
-      </header>
-      <main className="admin-main">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-          <h2>Gerenciamento de Tenants</h2>
-          <Link href="/tenants/new" style={{
-            padding: '0.75rem 1.5rem',
-            backgroundColor: '#0070f3',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '4px',
-          }}>
-            Novo Tenant
-          </Link>
+    <div>
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <div>
+              <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#1e293b', margin: 0 }}>
+                Gerenciamento de Tenants
+              </h1>
+              <p style={{ color: '#64748b', marginTop: '0.5rem' }}>
+                Gerencie todos os tenants da plataforma
+              </p>
+            </div>
+            <Link href="/tenants/new" className="admin-btn admin-btn-primary">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 4V16M4 10H16"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              Novo Tenant
+            </Link>
+          </div>
         </div>
 
         {error && (
-          <div style={{
-            padding: '1rem',
-            backgroundColor: '#fee',
-            color: '#c00',
-            borderRadius: '4px',
-            marginBottom: '1rem',
+          <div className="admin-card" style={{
+            backgroundColor: '#fee2e2',
+            borderColor: '#fecaca',
+            marginBottom: '1.5rem',
           }}>
-            {error}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#991b1b' }}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M10 6V10M10 14H10.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span style={{ fontWeight: 500 }}>{error}</span>
+            </div>
           </div>
         )}
 
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #ddd' }}>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Nome</th>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Slug</th>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Email</th>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Plano</th>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Status</th>
-              <th style={{ padding: '1rem', textAlign: 'left' }}>Ações</th>
-            </tr>
-          </thead>
+        <div className="admin-card">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Slug</th>
+                <th>Email</th>
+                <th>Plano</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
           <tbody>
-            {tenants.map((tenant) => (
-              <tr key={tenant.id} style={{ borderBottom: '1px solid #eee' }}>
-                <td style={{ padding: '1rem' }}>{tenant.name}</td>
-                <td style={{ padding: '1rem' }}>{tenant.slug}</td>
-                <td style={{ padding: '1rem' }}>{tenant.email}</td>
-                <td style={{ padding: '1rem' }}>{tenant.subscription_plan}</td>
-                <td style={{ padding: '1rem' }}>
-                  <span style={{
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '12px',
-                    fontSize: '0.875rem',
-                    backgroundColor: tenant.is_active ? '#d4edda' : '#f8d7da',
-                    color: tenant.is_active ? '#155724' : '#721c24',
-                  }}>
-                    {tenant.is_active ? 'Ativo' : 'Inativo'}
-                  </span>
-                </td>
-                <td style={{ padding: '1rem' }}>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <Link href={`/tenants/${tenant.id}`} style={{
-                      padding: '0.5rem 1rem',
-                      backgroundColor: '#6c757d',
-                      color: 'white',
-                      textDecoration: 'none',
+            {tenants.map((tenant) => {
+              // Garantir que o tenant tem ID válido
+              if (!tenant || tenant.id === undefined || tenant.id === null) {
+                return null;
+              }
+              
+              return (
+                <tr key={tenant.id}>
+                  <td>{tenant.name || 'Sem nome'}</td>
+                  <td>
+                    <code style={{ 
+                      background: '#f1f5f9', 
+                      padding: '0.25rem 0.5rem', 
                       borderRadius: '4px',
-                      fontSize: '0.875rem',
+                      fontSize: '0.875rem'
                     }}>
-                      Ver
-                    </Link>
+                      {tenant.slug || 'N/A'}
+                    </code>
+                  </td>
+                  <td>{tenant.email || 'N/A'}</td>
+                  <td>
+                    <span className={`admin-badge admin-badge-info`}>
+                      {tenant.subscription_plan || 'N/A'}
+                    </span>
+                  </td>
+                  <td>
+                    <span className={`admin-badge ${tenant.is_active ? 'admin-badge-success' : 'admin-badge-danger'}`}>
+                      {tenant.is_active ? 'Ativo' : 'Inativo'}
+                    </span>
+                  </td>
+                  <td>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <Link 
+                        href={`/tenants/${String(tenant.id)}`} 
+                        className="admin-btn admin-btn-secondary" 
+                        style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}
+                      >
+                        Ver
+                      </Link>
                     <button
                       onClick={() => handleToggleActive(tenant.id, tenant.is_active)}
-                      style={{
-                        padding: '0.5rem 1rem',
-                        backgroundColor: tenant.is_active ? '#dc3545' : '#28a745',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
+                      className={`admin-btn ${tenant.is_active ? 'admin-badge-danger' : 'admin-badge-success'}`}
+                      style={{ 
+                        padding: '0.5rem 1rem', 
                         fontSize: '0.875rem',
+                        background: tenant.is_active ? '#ef4444' : '#10b981',
+                        color: 'white',
+                        border: 'none'
                       }}
                     >
                       {tenant.is_active ? 'Desativar' : 'Ativar'}
@@ -163,16 +203,34 @@ export default function TenantsPage() {
                   </div>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
-        </table>
+          </table>
+        </div>
 
         {tenants.length === 0 && !error && (
-          <p style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
-            Nenhum tenant cadastrado ainda.
-          </p>
+          <div className="admin-card" style={{ textAlign: 'center', padding: '3rem' }}>
+            <svg width="64" height="64" viewBox="0 0 20 20" fill="none" style={{ margin: '0 auto 1rem', color: '#94a3b8' }}>
+              <path
+                d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+              <path
+                d="M10 11C6.68629 11 4 13.6863 4 17V20H16V17C16 13.6863 13.3137 11 10 11Z"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+            </svg>
+            <p style={{ color: '#64748b', fontSize: '1rem', margin: 0 }}>
+              Nenhum tenant cadastrado ainda.
+            </p>
+            <Link href="/tenants/new" className="admin-btn admin-btn-primary" style={{ marginTop: '1rem' }}>
+              Criar Primeiro Tenant
+            </Link>
+          </div>
         )}
-      </main>
     </div>
   );
 }
