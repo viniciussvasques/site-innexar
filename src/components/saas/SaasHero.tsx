@@ -16,7 +16,7 @@ const SaasHero = () => {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center bg-linear-to-br from-blue-900 via-indigo-900 to-purple-900 overflow-hidden">
+    <section id="innexar-erp" className="relative min-h-screen flex items-center bg-linear-to-br from-blue-900 via-indigo-900 to-purple-900 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>

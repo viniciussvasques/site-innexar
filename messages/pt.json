@@ -3,6 +3,8 @@
     "home": "Início",
     "services": "Serviços",
     "saas": "SaaS",
+    "saasInnexar": "Innexar ERP",
+    "saasStructurone": "StructurOne",
     "about": "Sobre",
     "portfolio": "Portfólio",
     "contact": "Contato",
@@ -23,6 +25,37 @@
       "title": "Arquitetura Multi-Tenant",
       "description": "Ambientes seguros e isolados para cada cliente com infraestrutura compartilhada para eficiência de custos ideal."
     },
+  "saasSelector": {
+    "hero": {
+      "badge": "Nossas Plataformas SaaS",
+      "title": "Escolha sua",
+      "highlight": "solução SaaS",
+      "subtitle": "Oferecemos duas soluções SaaS poderosas: o ERP multi-tenant Innexar e o StructurOne, focado em construtoras e incorporadoras.",
+      "cta": "Começar"
+    },
+    "title": "Escolha a plataforma SaaS da Innexar",
+    "subtitle": "Temos duas soluções SaaS: o ERP multi-tenant Innexar e o StructurOne, focado em construtoras e incorporadoras.",
+    "innexar": {
+      "title": "Innexar ERP",
+      "description": "ERP SaaS multi-tenant e rebrandable para pequenas e médias empresas, com módulos de estoque, vendas, financeiro e mais.",
+      "points": [
+        "Multiempresa e multiusuário",
+        "Subdomínios por cliente e provisionamento automático",
+        "Gestão comercial, administrativa e operacional"
+      ],
+      "cta": "Ver detalhes do Innexar ERP"
+    },
+    "structurone": {
+      "title": "StructurOne",
+      "description": "SaaS especializado para construtoras e incorporadoras, cobrindo empreendimentos, vendas, investidores e financeiro.",
+      "points": [
+        "Onboarding por país (CNPJ, EIN, etc.)",
+        "Módulos de projetos, investidores e financeiro",
+        "Billing integrado com Stripe e Asaas"
+      ],
+      "cta": "Ver detalhes do StructurOne"
+    }
+  },
     "feature2": {
       "title": "Provisionamento Automático",
       "description": "Criação instantânea de subdomínio, configuração de banco de dados e provisionamento de contas de usuário na assinatura."
@@ -103,6 +136,83 @@
         ]
       }
     },
+  "structurone": {
+    "title": "StructurOne - Gestão para Construtoras e Incorporadoras",
+    "subtitle": "Plataforma SaaS especializada da Innexar para gestão de empreendimentos imobiliários, obras, vendas e investidores.",
+    "hero": {
+      "badge": "SaaS focado em construção civil",
+      "watchDemo": "Ver demo do StructurOne",
+      "clientDashboard": "Painel StructurOne",
+      "benefits": [
+        "Onboarding por país (CNPJ, EIN, etc.)",
+        "Módulos de projetos, investidores e financeiro",
+        "Multi-tenant com subdomínios por empresa",
+        "Billing integrado (Stripe e Asaas) por país/moeda"
+      ],
+      "cta": "Começar conversa sobre StructurOne",
+      "mock": {
+        "projects": "Projetos ativos",
+        "volume": "VGV em captação",
+        "project1": "Torre Horizonte",
+        "status1": "Em obras",
+        "project2": "Centro Empresarial Vista",
+        "status2": "Lançamento",
+        "project3": "Condomínio Jardim",
+        "status3": "Entregue"
+      }
+    },
+    "pricing": {
+      "title": "Planos do StructurOne",
+      "subtitle": "Preços pensados para construtoras e incorporadoras de diferentes portes.",
+      "perMonth": "/mês",
+      "selectPlan": "Começar com este plano",
+      "plans": [
+        {
+          "slug": "essential",
+          "name": "Essencial",
+          "price": "R$ 197",
+          "description": "Para pequenas construtoras que querem sair do Excel e organizar 3 empreendimentos.",
+          "features": [
+            "Até 3 empreendimentos ativos",
+            "Até 3 usuários",
+            "Dashboard financeiro básico",
+            "Controle simples de investidores",
+            "Relatórios PDF padrão"
+          ]
+        },
+        {
+          "slug": "professional",
+          "name": "Profissional",
+          "price": "R$ 797",
+          "description": "Ideal para construtoras e incorporadoras em crescimento com portfólio de empreendimentos.",
+          "highlight": "Mais vendido",
+          "features": [
+            "Até 20 empreendimentos ativos",
+            "Até 20 usuários",
+            "Dashboard avançado (vendas, captação, obras)",
+            "Módulo completo de investidores",
+            "Fluxos de aprovação e governança",
+            "Exportação avançada (CSV / Excel)",
+            "Suporte prioritário em horário comercial"
+          ]
+        },
+        {
+          "slug": "enterprise",
+          "name": "Enterprise",
+          "price": "R$ 1.997",
+          "description": "Para grupos econômicos, holdings e grandes incorporadoras com múltiplos CNPJs.",
+          "features": [
+            "Empreendimentos ilimitados",
+            "Usuários ilimitados",
+            "Múltiplos CNPJs / tenants",
+            "Relatórios e integrações customizadas",
+            "Suporte dedicado com SLA",
+            "Onboarding e treinamento personalizados"
+          ]
+        }
+      ]
+    }
+  },
     "overview": {
       "title": "Visão Geral da Plataforma",
       "subtitle": "Uma solução SaaS abrangente projetada para escalabilidade e personalização",
@@ -156,14 +266,179 @@
     "cta": "Solicitar Demonstração"
   },
   "hero": {
-    "title": "Soluções Tecnológicas Inovadoras",
-    "subtitle": "Capacitando empresas com desenvolvimento de software, infraestrutura e serviços de consultoria de ponta",
-    "cta": "Começar",
-    "learnMore": "Saiba Mais"
+    "badge": "Estúdio digital full-stack",
+    "title": "Transformamos operações complexas em",
+    "highlight": "produtos digitais que convertem.",
+    "subtitle": "A Innexar cria sites, plataformas SaaS e sistemas corporativos ponta a ponta com times seniores de estratégia, design, engenharia, QA e dados.",
+    "primaryCta": "Agende uma call estratégica",
+    "secondaryCta": "Veja lançamentos recentes",
+    "coverage": "Atuamos no Brasil, Estados Unidos e América Latina",
+    "problem": {
+      "title": "Antes da Innexar",
+      "items": [
+        "Experiências fragmentadas entre marketing, produto e backoffice",
+        "Cadência de lançamentos travada por dívidas técnicas e processos manuais",
+        "Decisões sem dados confiáveis, analytics ou automações"
+      ]
+    },
+    "solution": {
+      "title": "Depois da Innexar",
+      "items": [
+        "Plataformas unificadas com UX premium, localizações e acessibilidade",
+        "Arquitetura componível, integrações e fluxos prontos para automação",
+        "Observabilidade, analytics e experimentos lançados a cada sprint"
+      ]
+    },
+    "callout": "Escale mais rápido",
+    "metrics": [
+      { "value": "120+", "label": "Lançamentos digitais entregues" },
+      { "value": "45%", "label": "Aumento médio de conversão" },
+      { "value": "6x", "label": "Cadência de releases mais veloz" },
+      { "value": "24/7", "label": "Suporte bilíngue com SLAs" }
+    ],
+    "outcome": {
+      "title": "Resultados que podemos comprovar",
+      "subtitle": "Produto, design, engenharia e dados atuando como um único time.",
+      "description": "Squads dedicados co-criam com seus stakeholders, entregando incrementos prontos para produção a cada duas semanas com QA, segurança e documentação."
+    },
+    "impact": {
+      "title": "Do lançamento ao scale-up",
+      "description": "Orquestramos funis de marketing, monetização SaaS, infraestrutura, pagamentos, analytics e portais em uma única parceria."
+    }
+  },
+  "technologies": {
+    "badge": "Stack de tecnologia confiável",
+    "title": "Construímos com as melhores tecnologias do mercado",
+    "subtitle": "Aliamos frameworks modernos, nuvens globais e ferramentas de IA para entregar produtos prontos para escala, compliance e inovação contínua.",
+    "stack": {
+      "title": "Frontend & Camada de Aplicação",
+      "description": "Experiências com foco em performance, acessibilidade e produtividade de desenvolvimento.",
+      "items": [
+        "Next.js 14 / React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Storybook",
+        "Vercel Edge"
+      ]
+    },
+    "cloud": {
+      "title": "Cloud & Infraestrutura",
+      "description": "Arquiteturas multi-cloud com deploy resiliente e observabilidade completa.",
+      "items": [
+        "Google Cloud Platform",
+        "Amazon Web Services",
+        "Microsoft Azure",
+        "Kubernetes",
+        "Docker",
+        "Terraform"
+      ]
+    },
+    "ai": {
+      "title": "IA & Dados",
+      "description": "Inteligência aplicada para experiências de produto, automações e analytics.",
+      "items": [
+        "OpenAI GPT-4 / GPT-4o",
+        "Vertex AI",
+        "LangChain",
+        "BigQuery",
+        "Pinecone",
+        "dbt"
+      ]
+    },
+    "tooling": {
+      "title": "DevOps & Qualidade",
+      "description": "Pipelines automatizados com confiabilidade, segurança e monitoramento em tempo real.",
+      "items": [
+        "GitHub Actions",
+        "Sentry",
+        "Datadog",
+        "SonarQube",
+        "Postman",
+        "Cypress"
+      ]
+    },
+    "cta": "Precisa de outro stack? Integrarmos com o seu ecossistema atual ou desenhamos uma arquitetura sob medida para o seu roadmap."
   },
   "services": {
-    "title": "Nossos Serviços",
-    "subtitle": "Soluções tecnológicas abrangentes adaptadas às suas necessidades empresariais",
+    "eyebrow": "O que entregamos",
+    "title": "Produtos digitais prontos para escalar",
+    "subtitle": "Estratégia, design, engenharia e growth atuando juntos para lançar e acelerar suas experiências web, mobile e SaaS.",
+    "items": [
+      {
+        "key": "web",
+        "title": "Experiências web focadas em conversão",
+        "headline": "Landing pages, sites institucionais e launchpads que vendem.",
+        "description": "Criamos sites e funis com storytelling, localização, SEO e analytics prontos para crescer desde o primeiro dia.",
+        "results": [
+          "Websites premium, microsites e hubs multilíngues",
+          "Copywriting, design system e CMS preparados para seu time",
+          "Experimentos, testes A/B e otimização de performance"
+        ],
+        "tag": "Brand & Marketing"
+      },
+      {
+        "key": "saas",
+        "title": "Plataformas SaaS e ERPs",
+        "headline": "Do MVP à plataforma pronta para assinatura.",
+        "description": "Estratégia de produto, UX, billing, permissões e integrações ponta a ponta para você focar em tração.",
+        "results": [
+          "Arquitetura multi-tenant com onboarding e billing",
+          "Integrações Stripe, Asaas, marketplaces e ERPs",
+          "Portais administrativos, analytics e workflows por papéis"
+        ],
+        "tag": "Products & Platforms"
+      },
+      {
+        "key": "mobile",
+        "title": "Mobile & operações em campo",
+        "headline": "Apps que conectam matriz, equipes externas e clientes.",
+        "description": "Experiências nativas com modo offline, geolocalização, fluxos de tarefas e sincronização rápida com seus sistemas.",
+        "results": [
+          "Apps iOS, Android e PWA com um único codebase",
+          "Formulários digitais, workflows, aprovações e automações",
+          "Push, chat, captura de mídia e dashboards em tempo real"
+        ],
+        "tag": "Field Ops"
+      },
+      {
+        "key": "ai",
+        "title": "IA, automação e analytics",
+        "headline": "Times aumentados com decisões data-driven e copilotos.",
+        "description": "Ativamos dados, LLMs e automações para personalizar experiências, eliminar trabalhos manuais e gerar insights de negócio.",
+        "results": [
+          "Assistentes com LLM treinados na sua base de conhecimento",
+          "Pipelines de dados, governança e relatórios em tempo real",
+          "RPA, orquestração de workflows e alertas inteligentes"
+        ],
+        "tag": "Intelligence"
+      },
+      {
+        "key": "cloud",
+        "title": "Arquitetura cloud & DevOps",
+        "headline": "Infraestrutura segura, observável e escalável.",
+        "description": "Landing zone, IaC, CI/CD e confiabilidade para seu time entregar mais rápido com segurança em ambientes multi-cloud.",
+        "results": [
+          "Arquiteturas Google Cloud, AWS e Azure",
+          "IaC com Terraform, Kubernetes e serviços gerenciados",
+          "Observabilidade, hardening de segurança e compliance"
+        ],
+        "tag": "Platform Engineering"
+      },
+      {
+        "key": "integrations",
+        "title": "Integrações & modernização de legados",
+        "headline": "Sistemas conectados, processos automatizados e legados renovados.",
+        "description": "APIs, middleware e ERPs conversando para você ter visibilidade total e operação em tempo real.",
+        "results": [
+          "Padrões API-first, event-driven e serverless",
+          "Integrações com CRM, ERP, pagamentos, logística e IoT",
+          "Replatforming progressivo com downtime mínimo"
+        ],
+        "tag": "Enterprise"
+      }
+    ],
+    "footnote": "Precisa de algo específico? Desenhamos escopos sob medida com o squad ideal para cada fase.",
     "hero": {
       "title": "Transforme Seu Negócio com Tecnologia",
       "subtitle": "Entregamos soluções inovadoras que impulsionam inovação, eficiência e crescimento em todos os setores",
@@ -406,6 +681,20 @@
     }
   },
   "about": {
+    "hero": {
+      "badge": "Quem Somos",
+      "title": "Somos uma equipe de",
+      "highlight": "especialistas em tecnologia",
+      "subtitle": "Profissionais apaixonados dedicados a entregar resultados excepcionais. Com anos de experiência em desenvolvimento de software, infraestrutura e consultoria, ajudamos empresas a se transformar e crescer na era digital.",
+      "primaryCta": "Trabalhe Conosco",
+      "secondaryCta": "Ver Portfólio",
+      "metrics": [
+        { "value": "5+", "label": "Anos de Excelência" },
+        { "value": "50+", "label": "Projetos Entregues" },
+        { "value": "100%", "label": "Satisfação do Cliente" },
+        { "value": "24/7", "label": "Suporte Disponível" }
+      ]
+    },
     "title": "Sobre a Innexar",
     "subtitle": "Liderando o caminho em soluções tecnológicas inovadoras",
     "description": "Somos uma equipe de especialistas em tecnologia apaixonados, dedicados a entregar resultados excepcionais para nossos clientes. Com anos de experiência em desenvolvimento de software, infraestrutura e consultoria, ajudamos empresas a se transformar e crescer na era digital.",
@@ -422,23 +711,384 @@
       "projectsTitle": "Projetos Entregues",
       "satisfactionTitle": "Satisfação do Cliente"
     },
-    "learnMoreBtn": "Saiba Mais Sobre Nós"
+    "learnMoreBtn": "Saiba Mais Sobre Nós",
+    "mission": {
+      "title": "Nossa Missão",
+      "description": "Capacitar empresas em todo o mundo com soluções tecnológicas de ponta que impulsionam inovação, eficiência e crescimento sustentável. Conectamos desafios técnicos complexos com objetivos de negócio, entregando resultados mensuráveis que transformam organizações."
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "description": "Tornar-nos o parceiro tecnológico mais confiável para empresas que buscam transformação digital. Vislumbramos um futuro onde toda empresa, independentemente do tamanho, tenha acesso a soluções tecnológicas de nível empresarial que permitam competir e prosperar na economia digital."
+    },
+    "values": {
+      "title": "Nossos Valores Fundamentais",
+      "subtitle": "Os princípios que guiam tudo o que fazemos",
+      "items": [
+        {
+          "icon": "LightBulbIcon",
+          "title": "Inovação",
+          "description": "Exploramos constantemente novas tecnologias e metodologias para entregar soluções de ponta que mantêm nossos clientes à frente da concorrência."
+        },
+        {
+          "icon": "ShieldCheckIcon",
+          "title": "Integridade",
+          "description": "Construímos confiança através de transparência, honestidade e práticas éticas em cada interação e projeto que realizamos."
+        },
+        {
+          "icon": "UserGroupIcon",
+          "title": "Colaboração",
+          "description": "Acreditamos no poder do trabalho em equipe, tanto dentro de nossa organização quanto com nossos clientes, para alcançar resultados excepcionais."
+        },
+        {
+          "icon": "RocketLaunchIcon",
+          "title": "Excelência",
+          "description": "Estamos comprometidos em entregar o trabalho de mais alta qualidade, melhorando continuamente nossos processos e superando expectativas."
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Nossa Jornada",
+      "subtitle": "Marcos que moldaram quem somos hoje",
+      "items": [
+        {
+          "year": "2020",
+          "title": "Fundação",
+          "description": "A Innexar foi fundada com a visão de democratizar soluções tecnológicas empresariais para empresas de todos os tamanhos."
+        },
+        {
+          "year": "2021",
+          "title": "Primeiros Grandes Clientes",
+          "description": "Entregamos com sucesso nossos primeiros projetos empresariais, estabelecendo nossa reputação por qualidade e confiabilidade."
+        },
+        {
+          "year": "2022",
+          "title": "Expansão Internacional",
+          "description": "Expandimos operações para os Estados Unidos e América Latina, atendendo clientes em múltiplos continentes."
+        },
+        {
+          "year": "2023",
+          "title": "Lançamento de Plataformas SaaS",
+          "description": "Lançamos nossos primeiros produtos SaaS, Innexar ERP e StructurOne, revolucionando como empresas gerenciam operações."
+        },
+        {
+          "year": "2024",
+          "title": "Integração de IA",
+          "description": "Integramos capacidades de IA e machine learning em nossas soluções, permitindo processos de negócio mais inteligentes e automatizados."
+        },
+        {
+          "year": "2025",
+          "title": "Liderança no Setor",
+          "description": "Hoje, somos reconhecidos como líderes em transformação digital, atendendo mais de 50 clientes com soluções tecnológicas de ponta."
+        }
+      ]
+    },
+    "technologies": {
+      "title": "Tecnologias que Dominamos",
+      "subtitle": "Nossa expertise abrange toda a stack tecnológica",
+      "items": [
+        "React & Next.js",
+        "Python & Django",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "MongoDB",
+        "AWS",
+        "Google Cloud",
+        "Azure",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Stripe",
+        "OpenAI GPT",
+        "GraphQL",
+        "Redis",
+        "Elasticsearch",
+        "CI/CD"
+      ]
+    },
+    "certifications": {
+      "title": "Certificações e Padrões",
+      "subtitle": "Mantemos os mais altos padrões em segurança, qualidade e conformidade",
+      "items": [
+        "Certificado ISO 27001",
+        "Conformidade GDPR",
+        "SOC 2 Tipo II",
+        "Conformidade HIPAA",
+        "PCI DSS Nível 1",
+        "Parceiros Certificados AWS",
+        "Parceiros Google Cloud",
+        "Parceiros Microsoft Azure"
+      ]
+    }
+  },
+  "process": {
+    "eyebrow": "Workflow comprovado",
+    "title": "Da descoberta ao crescimento mensurável em semanas",
+    "subtitle": "Conduzimos cada iniciativa em um trilho acelerado que mantém stakeholders alinhados e incrementos entregues em produção a cada sprint.",
+    "deliverable": "Entregáveis-chave",
+    "nextStep": "Próximo passo",
+    "steps": [
+      {
+        "title": "Descoberta & estratégia",
+        "description": "Imersões para entender objetivos, personas, restrições e integrações enquanto desenhamos a visão do produto.",
+        "deliverable": "Vision deck, métricas de sucesso, roadmap priorizado e diagnóstico técnico.",
+        "duration": "Semana 0-1"
+      },
+      {
+        "title": "Experiência & arquitetura",
+        "description": "Fluxos de UX, identidade visual, modelo de dados e decisões de arquitetura que blindam o futuro do produto.",
+        "deliverable": "Protótipos interativos, base do design system e blueprint de arquitetura.",
+        "duration": "Semana 1-2"
+      },
+      {
+        "title": "Construção & automação",
+        "description": "Entrega ágil com CI/CD, QA, analytics e automações implementadas junto de cada incremento.",
+        "deliverable": "Incrementos prontos para produção, testes automatizados, IaC e tracking de analytics.",
+        "duration": "Semana 2-6"
+      },
+      {
+        "title": "Lançamento & growth",
+        "description": "Orquestração de go-live, documentação, treinamento e otimizações contínuas guiadas por dados.",
+        "deliverable": "Playbook de lançamento, SLOs, dashboards, enablement e roadmap dos próximos experimentos.",
+        "duration": "Semana 6+"
+      }
+    ]
+  },
+  "successStories": {
+    "eyebrow": "Casos de sucesso",
+    "title": "Impacto em diferentes setores",
+    "subtitle": "Criamos plataformas que destravam eficiência, receita e experiências incríveis para equipes e clientes.",
+    "challenge": "Desafio",
+    "solution": "Solução",
+    "results": "Resultados",
+    "cases": [
+      {
+        "name": "StructurOne",
+        "industry": "SaaS para Construção",
+        "challenge": "Planilhas manuais, equipes desconectadas e nenhuma visibilidade em obras multimilionárias.",
+        "solution": "ERP multi-tenant com orçamentos, compras, gestão documental e analytics, integrado ao Stripe para billing e Procore para operações.",
+        "results": [
+          "85% mais rápido para aprovar orçamentos e atualizar obras",
+          "Cobrança automatizada com assinaturas multi-moeda",
+          "Dashboards executivos com saúde do projeto em tempo real"
+        ]
+      },
+      {
+        "name": "Bluemart Marketplace",
+        "industry": "Varejo & eCommerce",
+        "challenge": "Jornadas fragmentadas e atualizações lentas de merchandising em 12 categorias.",
+        "solution": "Arquitetura headless com CMS, motor de promoções, recomendações com IA e contas unificadas.",
+        "results": [
+          "3x mais conversões em add-to-cart",
+          "Sincronização unificada entre ERP, logística e PDV",
+          "Experiências personalizadas em três idiomas"
+        ]
+      },
+      {
+        "name": "Helios Energy Field Ops",
+        "industry": "Energia & Utilities",
+        "challenge": "Inspeções em papel e dados de compliance espalhados em sistemas legados.",
+        "solution": "Apps mobile offline-first para equipes de campo, pipelines automatizados de relatórios e dashboards de conformidade.",
+        "results": [
+          "40% de redução no tempo de inspeção",
+          "Relatórios para auditoria gerados automaticamente",
+          "Alertas de manutenção preditiva com dados de IoT"
+        ]
+      }
+    ],
+    "cta": "Solicite os cases completos",
+    "ctaLink": "#contact"
+  },
+  "testimonials": {
+    "eyebrow": "Depoimentos",
+    "title": "Times que crescem com a Innexar",
+    "subtitle": "Entramos como parceiros, trabalhando lado a lado com o seu time.",
+    "items": [
+      {
+        "quote": "A Innexar transformou nossa visão em uma plataforma escalável cuidando de produto, design, engenharia e growth. Lançamos um SaaS completo em 90 dias e a conversão subiu imediatamente.",
+        "name": "Carolina Mendes",
+        "role": "Head de Growth",
+        "company": "ScaleUp Latam"
+      },
+      {
+        "quote": "Reconstruíram nossa operação logística com APIs, automações e dashboards que finalmente deram visibilidade em tempo real. Hoje lançamos semanalmente sem indisponibilidade.",
+        "name": "Michael Turner",
+        "role": "CTO",
+        "company": "Northbridge Logistics"
+      },
+      {
+        "quote": "Além do código impecável, o squad trouxe pensamento de produto, analytics e experimentação. Reduzimos o onboarding pela metade e nosso NPS chegou a 72.",
+        "name": "Ana Paula Ribeiro",
+        "role": "Diretora de Produto",
+        "company": "Habitus"
+      }
+    ]
+  },
+  "engagement": {
+    "eyebrow": "Como colaboramos",
+    "title": "Modelos de parceria sob medida",
+    "subtitle": "Escolha o formato ideal para o seu estágio. Podemos acelerar discovery, operar squads ou assumir toda a frente digital.",
+    "models": [
+      {
+        "title": "Acelerador de discovery",
+        "description": "Valide oportunidades, mapeie requisitos e defina o roadmap com um pod multidisciplinar dedicado.",
+        "badge": "Sprint de 2 semanas",
+        "items": [
+          "Visão de produto, personas e KPIs",
+          "Jornadas, protótipos e backlog priorizado",
+          "Arquitetura técnica e plano de integrações"
+        ]
+      },
+      {
+        "title": "Product squad",
+        "description": "Squad autônomo entregando continuamente com UX, engenharia, QA e analytics integrados.",
+        "badge": "Retainer mensal",
+        "items": [
+          "Roadmap com rituais ágeis e OKRs compartilhados",
+          "Design system, codebase e automações sob nossa gestão",
+          "Experimentação de growth e relatórios recorrentes"
+        ]
+      },
+      {
+        "title": "Extensão de time dedicado",
+        "description": "Escale seu time interno com talentos especialistas imersos nos seus rituais, cultura e ferramentas.",
+        "badge": "Parceria contínua",
+        "items": [
+          "Engenheiros, PMs, designers e especialistas em dados seniores",
+          "Suporte 24/7, SLAs e transferência de conhecimento",
+          "OKRs conjuntos, playbooks de entrega e documentação"
+        ]
+      }
+    ]
+  },
+  "leadMagnet": {
+    "eyebrow": "Vamos construir juntos",
+    "title": "Receba um blueprint de crescimento digital",
+    "subtitle": "Agende uma sessão estratégica com nossos leads e receba um plano de ação sob medida cobrindo produto, tecnologia e go-to-market.",
+    "features": [
+      "Workshop de 60 minutos com especialistas de produto, design e engenharia",
+      "Benchmark de concorrentes e oportunidades no seu segmento",
+      "Faixas de investimento, cenários de prazo e estrutura de squad recomendada"
+    ],
+    "primaryCta": "Agendar workshop",
+    "secondaryCta": "Baixar checklist",
+    "secondaryLink": "#contact",
+    "stats": [
+      { "value": "2-4 semanas", "label": "Tempo médio para blueprint de MVP" },
+      { "value": "99,9%", "label": "Arquiteturas em cloud projetadas com SLA" }
+    ],
+    "footnote": "Assinamos NDA, atuamos em múltiplos fusos e nos plugamos às ferramentas que você já usa."
   },
   "contact": {
+    "hero": {
+      "badge": "Vamos Conversar",
+      "title": "Pronto para iniciar",
+      "highlight": "seu próximo projeto?",
+      "subtitle": "Entre em contato com nossa equipe. Estamos aqui para ajudar você a transformar suas ideias em soluções digitais poderosas.",
+      "emailValue": "comercial@innexar.app",
+      "emailLabel": "Email",
+      "addressLabel": "Endereço",
+      "phones": [
+        { "label": "Brasil", "display": "+55 11 5108-5266", "href": "+551151085266" },
+        { "label": "Estados Unidos", "display": "+1 407 473-6081", "href": "+14074736081" }
+      ],
+      "addressLines": ["13013 Yardsley Ct", "Orlando, Flórida 32832"]
+    },
     "title": "Entre em Contato",
     "subtitle": "Pronto para começar seu próximo projeto?",
     "info": {
+      "title": "Entre em Contato",
+      "subtitle": "Estamos aqui para ajudar você a transformar suas ideias em realidade. Entre em contato pelo canal que preferir.",
       "email": "Email",
+      "emailValue": "comercial@innexar.app",
       "phone": "Telefone",
-      "address": "Endereço",
-      "addressText": "Rua da Tecnologia, 123\nCidade da Inovação, CI 12345"
+      "phones": [
+        { "label": "Brasil", "display": "+55 11 5108-5266", "href": "+551151085266" },
+        { "label": "Estados Unidos", "display": "+1 407 473-6081", "href": "+14074736081" }
+      ],
+      "address": "Escritório nos Estados Unidos",
+      "addressLines": ["13013 Yardsley Ct", "Orlando, Flórida 32832"],
+      "hours": {
+        "title": "Horário de Atendimento",
+        "weekdays": "Segunda - Sexta: 9:00 - 18:00",
+        "weekend": "Sábado - Domingo: Fechado"
+      }
     },
     "form": {
-      "name": "Nome",
-      "email": "Email",
-      "company": "Empresa",
-      "message": "Mensagem",
-      "submit": "Enviar Mensagem"
+      "title": "Envie uma mensagem",
+      "subtitle": "Preencha o formulário abaixo e retornaremos em até 24 horas.",
+      "name": "Nome Completo",
+      "email": "Endereço de Email",
+      "phone": "Telefone",
+      "company": "Nome da Empresa",
+      "projectType": "Tipo de Projeto",
+      "budget": "Faixa de Orçamento",
+      "timeline": "Prazo",
+      "message": "Detalhes do Projeto",
+      "submit": "Enviar Mensagem",
+      "submitting": "Enviando...",
+      "privacy": "Ao enviar este formulário, você concorda com nossa política de privacidade e termos de serviço.",
+      "placeholders": {
+        "name": "João Silva",
+        "email": "joao@empresa.com",
+        "phone": "+55 11 99999-9999",
+        "company": "Sua Empresa",
+        "projectType": "Selecione o tipo de projeto",
+        "budget": "Selecione a faixa de orçamento",
+        "timeline": "Selecione o prazo",
+        "message": "Conte-nos sobre seu projeto, objetivos e requisitos específicos..."
+      },
+      "projectTypes": [
+        { "value": "web", "label": "Desenvolvimento Web" },
+        { "value": "saas", "label": "Plataforma SaaS" },
+        { "value": "mobile", "label": "App Mobile" },
+        { "value": "ecommerce", "label": "E-commerce" },
+        { "value": "erp", "label": "Sistema ERP" },
+        { "value": "integration", "label": "Integração de Sistemas" },
+        { "value": "consulting", "label": "Consultoria" },
+        { "value": "other", "label": "Outro" }
+      ],
+      "budgetRanges": [
+        { "value": "under-10k", "label": "Abaixo de R$ 50.000" },
+        { "value": "10k-25k", "label": "R$ 50.000 - R$ 125.000" },
+        { "value": "25k-50k", "label": "R$ 125.000 - R$ 250.000" },
+        { "value": "50k-100k", "label": "R$ 250.000 - R$ 500.000" },
+        { "value": "100k-250k", "label": "R$ 500.000 - R$ 1.250.000" },
+        { "value": "over-250k", "label": "Acima de R$ 1.250.000" },
+        { "value": "discuss", "label": "Prefiro discutir" }
+      ],
+      "timelines": [
+        { "value": "asap", "label": "O quanto antes" },
+        { "value": "1-3months", "label": "1-3 meses" },
+        { "value": "3-6months", "label": "3-6 meses" },
+        { "value": "6-12months", "label": "6-12 meses" },
+        { "value": "planning", "label": "Apenas planejando" }
+      ],
+      "errors": {
+        "nameRequired": "Nome é obrigatório",
+        "emailRequired": "Email é obrigatório",
+        "emailInvalid": "Por favor, insira um email válido",
+        "phoneRequired": "Telefone é obrigatório",
+        "messageRequired": "Mensagem é obrigatória",
+        "messageMinLength": "Mensagem deve ter pelo menos 10 caracteres",
+        "submitFailed": "Falha ao enviar mensagem. Tente novamente.",
+        "networkError": "Erro de conexão. Verifique sua internet e tente novamente.",
+        "error": "Erro"
+      },
+      "success": {
+        "title": "Mensagem enviada com sucesso!",
+        "message": "Recebemos sua mensagem e retornaremos em até 24 horas."
+      }
+    }
+  },
+  "header": {
+    "top": {
+      "emailValue": "comercial@innexar.app",
+      "phones": [
+        { "label": "Brasil", "display": "+55 11 5108-5266", "href": "+551151085266" },
+        { "label": "Estados Unidos", "display": "+1 407 473-6081", "href": "+14074736081" }
+      ],
+      "cta": "Solicite uma proposta"
     }
   },
   "footer": {
@@ -447,6 +1097,18 @@
     "quickLinks": "Links Rápidos"
   },
   "portfolio": {
+    "hero": {
+      "badge": "Nosso Trabalho",
+      "title": "Soluções inovadoras",
+      "highlight": "que entregamos",
+      "subtitle": "Descubra os produtos digitais, plataformas e sistemas que construímos para clientes de diversos setores.",
+      "cta": "Inicie Seu Projeto",
+      "stats": [
+        { "value": "50+", "label": "Projetos Concluídos" },
+        { "value": "30+", "label": "Clientes Satisfeitos" },
+        { "value": "5+", "label": "Anos de Experiência" }
+      ]
+    },
     "title": "Nosso Portfólio",
     "subtitle": "Descubra as soluções inovadoras que construímos para nossos clientes",
     "filterAll": "Todos os Projetos",

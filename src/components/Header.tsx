@@ -5,7 +5,14 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronDownIcon,
+  GlobeAltIcon,
+  EnvelopeIcon,
+  PhoneIcon,
+} from '@heroicons/react/24/outline';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -16,19 +23,25 @@ const languages = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const [saasMenuOpen, setSaasMenuOpen] = useState(false);
   const t = useTranslations('navigation');
+  const headerT = useTranslations('header');
   const locale = useLocale();
 
-  const navigation: { name: string; href: string }[] = [
-    { name: t('home'), href: '/' },
-    { name: t('services'), href: '/services' },
-    { name: t('about'), href: '/about' },
-    { name: t('portfolio'), href: '/portfolio' },
-    { name: t('saas'), href: '/saas' },
-    { name: t('contact'), href: '/contact' },
+  const navigation: { key: string; name: string; href: string }[] = [
+    { key: 'home', name: t('home'), href: '/' },
+    { key: 'services', name: t('services'), href: '/services' },
+    { key: 'about', name: t('about'), href: '/about' },
+    { key: 'portfolio', name: t('portfolio'), href: '/portfolio' },
+    { key: 'saas', name: t('saas'), href: '/saas' },
+    { key: 'contact', name: t('contact'), href: '/contact' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
+
+  const topEmailValue = headerT('top.emailValue');
+  const topPhones = (headerT.raw('top.phones') as { label: string; display: string; href: string }[]) ?? [];
+  const topCta = headerT('top.cta');
 
   const changeLanguage = (newLocale: string) => {
     setLanguageMenuOpen(false);
@@ -45,7 +58,40 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+    <header className="fixed w-full z-50">
+      <div className="hidden lg:block bg-slate-900 text-slate-100 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <a
+              href={`mailto:${topEmailValue}`}
+              className="flex items-center gap-2 hover:text-cyan-300 transition-colors"
+            >
+              <EnvelopeIcon className="h-4 w-4" />
+              <span>{topEmailValue}</span>
+            </a>
+            {topPhones.map((phone) => (
+              <a
+                key={phone.display}
+                href={`tel:${phone.href}`}
+                className="flex items-center gap-2 hover:text-cyan-300 transition-colors"
+              >
+                <PhoneIcon className="h-4 w-4" />
+                <span className="hidden xl:inline">
+                  {phone.label} • {phone.display}
+                </span>
+                <span className="xl:hidden">{phone.display}</span>
+              </a>
+            ))}
+          </div>
+          <Link
+            href="/contact"
+            className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-900 hover:bg-cyan-200 transition-colors"
+          >
+            {topCta}
+          </Link>
+        </div>
+      </div>
+      <div className="bg-white/95 backdrop-blur-md shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
@@ -65,18 +111,56 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-2 lg:items-center">
             {navigation.map((item) => {
-              const isSaas = item.href === '/saas';
+              const isSaas = item.key === 'saas';
+
+              if (isSaas) {
+                // Dropdown para SaaS: Innexar ERP e StructurOne
+                return (
+                  <div
+                    key={item.key}
+                    className="relative"
+                    onMouseEnter={() => setSaasMenuOpen(true)}
+                    onMouseLeave={() => setSaasMenuOpen(false)}
+                  >
+                    <button
+                      className="flex items-center gap-x-1 px-5 py-2.5 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg transition-all duration-200"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDownIcon className="h-4 w-4" />
+                    </button>
+                    <AnimatePresence>
+                      {saasMenuOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 4 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50"
+                        >
+                          <Link
+                            href="/saas#innexar-erp"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                          >
+                            {t('saasInnexar')}
+                          </Link>
+                          <Link
+                            href="/saas#structurone"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                          >
+                            {t('saasStructurone')}
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
               return (
                 <Link
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
-                  className={`
-                    relative px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200
-                    ${isSaas
-                      ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                    }
-                  `}
+                  className="relative px-5 py-2.5 text-sm font-medium rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
                 >
                   {item.name}
                 </Link>
@@ -158,18 +242,37 @@ export default function Header() {
             >
               <div className="space-y-2 pb-4 pt-2">
                 {navigation.map((item) => {
-                  const isSaas = item.href === '/saas';
+                  const isSaas = item.key === 'saas';
+
+                  if (isSaas) {
+                    return (
+                      <div key={item.key} className="space-y-1 px-2">
+                        <div className="px-2 py-2 text-sm font-semibold text-gray-500 uppercase">
+                          {item.name}
+                        </div>
+                        <Link
+                          href="/saas#innexar-erp"
+                          className="block px-4 py-3 text-base font-medium rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {t('saasInnexar')}
+                        </Link>
+                        <Link
+                          href="/saas#structurone"
+                          className="block px-4 py-3 text-base font-medium rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {t('saasStructurone')}
+                        </Link>
+                      </div>
+                    );
+                  }
+
                   return (
                     <Link
-                      key={item.name}
+                      key={item.key}
                       href={item.href}
-                      className={`
-                        block px-4 py-3 text-base font-medium rounded-lg transition-all duration-200
-                        ${isSaas
-                          ? 'bg-blue-600 text-white hover:bg-blue-700'
-                          : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                        }
-                      `}
+                      className="block px-4 py-3 text-base font-medium rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -208,6 +311,7 @@ export default function Header() {
           )}
         </AnimatePresence>
       </nav>
+      </div>
     </header>
   );
 }
