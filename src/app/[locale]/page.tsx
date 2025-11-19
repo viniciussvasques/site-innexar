@@ -34,7 +34,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <About />
         <Contact />
         <Footer />
-      </main>
-    </>
+    </main>
   )
 }
