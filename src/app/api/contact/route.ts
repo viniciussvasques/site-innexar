@@ -17,8 +17,27 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Validar variáveis de ambiente SMTP
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
+      console.error('Variáveis SMTP não configuradas:', {
+        hasUser: !!process.env.SMTP_USER,
+        hasPassword: !!process.env.SMTP_PASSWORD,
+      })
+      return NextResponse.json(
+        { error: 'Configuração de email não encontrada. Entre em contato com o suporte.' },
+        { status: 500 }
+      )
+    }
+
     // Carregar traduções baseado no locale
-    const t = await getTranslations({ locale, namespace: 'contact.email' })
+    let t
+    try {
+      t = await getTranslations({ locale, namespace: 'contact.email' })
+    } catch (translationError) {
+      console.error('Erro ao carregar traduções:', translationError)
+      // Fallback para português se houver erro
+      t = await getTranslations({ locale: 'pt', namespace: 'contact.email' })
+    }
     
     const translations = {
       contactSubject: t('contactSubject'),
@@ -149,17 +168,37 @@ export async function POST(request: NextRequest) {
     )
   } catch (error: any) {
     console.error('Erro ao processar formulário de contato:', error)
+    console.error('Stack trace:', error.stack)
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      name: error.name,
+    })
     
     // Erro de configuração SMTP
-    if (error.code === 'EAUTH' || error.code === 'ECONNECTION') {
+    if (error.code === 'EAUTH' || error.code === 'ECONNECTION' || error.code === 'ETIMEDOUT') {
       return NextResponse.json(
-        { error: 'Erro de configuração de email. Verifique as credenciais SMTP.' },
+        { 
+          error: 'Erro de configuração de email. Verifique as credenciais SMTP no Vercel.',
+          details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        },
         { status: 500 }
       )
     }
 
+    // Erro de parsing JSON
+    if (error instanceof SyntaxError) {
+      return NextResponse.json(
+        { error: 'Erro ao processar os dados do formulário.' },
+        { status: 400 }
+      )
+    }
+
     return NextResponse.json(
-      { error: 'Erro ao processar a mensagem. Tente novamente.' },
+      { 
+        error: 'Erro ao processar a mensagem. Tente novamente.',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
       { status: 500 }
     )
   }

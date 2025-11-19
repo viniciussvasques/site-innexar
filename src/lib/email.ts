@@ -10,6 +10,14 @@ export function createTransporter() {
       user: process.env.SMTP_USER || '',
       pass: process.env.SMTP_PASSWORD || '', // App Password do Google Workspace
     },
+    // Timeout aumentado para evitar erros de conexão
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
+  }
+
+  if (!smtpConfig.auth.user || !smtpConfig.auth.pass) {
+    throw new Error('SMTP credentials not configured. Please set SMTP_USER and SMTP_PASSWORD environment variables.')
   }
 
   return nodemailer.createTransport(smtpConfig)
