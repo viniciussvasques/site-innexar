@@ -2,22 +2,34 @@ import nodemailer from 'nodemailer'
 
 // Configuração do transporter SMTP
 export function createTransporter() {
+  // Remover espaços da senha (caso tenha)
+  const password = (process.env.SMTP_PASSWORD || '').replace(/\s/g, '')
+  
   const smtpConfig = {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: parseInt(process.env.SMTP_PORT || '587'),
     secure: process.env.SMTP_SECURE === 'true', // true para 465, false para outras portas
     auth: {
       user: process.env.SMTP_USER || '',
-      pass: process.env.SMTP_PASSWORD || '', // App Password do Google Workspace
+      pass: password, // App Password do Google Workspace (sem espaços)
     },
     // Timeout aumentado para evitar erros de conexão
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000,
+    connectionTimeout: 20000,
+    greetingTimeout: 20000,
+    socketTimeout: 20000,
+    // TLS config para Google Workspace
+    tls: {
+      rejectUnauthorized: false, // Aceita certificados auto-assinados
+    },
   }
 
   if (!smtpConfig.auth.user || !smtpConfig.auth.pass) {
     throw new Error('SMTP credentials not configured. Please set SMTP_USER and SMTP_PASSWORD environment variables.')
+  }
+
+  // Validar que a senha tem 16 caracteres (formato App Password)
+  if (password.length !== 16) {
+    console.warn(`⚠️ Aviso: SMTP_PASSWORD deve ter 16 caracteres (atual: ${password.length}). Verifique se é uma App Password válida.`)
   }
 
   return nodemailer.createTransport(smtpConfig)

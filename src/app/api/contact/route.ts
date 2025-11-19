@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendEmail, createTransporter } from '@/lib/email'
+import { sendEmailResend, isResendConfigured } from '@/lib/email-resend'
+import { sendEmailOAuth2, isOAuth2Configured } from '@/lib/email-oauth2'
 import { getContactEmailTemplate, getAutoReplyTemplate } from '@/lib/email-templates'
 import { getTranslations } from 'next-intl/server'
 
@@ -17,25 +19,33 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validar variáveis de ambiente SMTP
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-      console.error('Variáveis SMTP não configuradas:', {
-        hasUser: !!process.env.SMTP_USER,
-        hasPassword: !!process.env.SMTP_PASSWORD,
-        hasHost: !!process.env.SMTP_HOST,
-        hasPort: !!process.env.SMTP_PORT,
-        nodeEnv: process.env.NODE_ENV,
-      })
-      return NextResponse.json(
-        { 
-          error: 'Configuração de email não encontrada. Verifique as variáveis de ambiente SMTP no Vercel.',
-          details: process.env.NODE_ENV === 'development' ? {
-            hasUser: !!process.env.SMTP_USER,
-            hasPassword: !!process.env.SMTP_PASSWORD,
-          } : undefined
-        },
-        { status: 500 }
-      )
+    // Verificar qual serviço de email usar (prioridade: OAuth2 > Resend > SMTP)
+    const useOAuth2 = isOAuth2Configured()
+    const useResend = !useOAuth2 && isResendConfigured()
+    
+    if (!useOAuth2 && !useResend) {
+      // Validar variáveis de ambiente SMTP (se não usar OAuth2 ou Resend)
+      if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
+        console.error('Variáveis de email não configuradas:', {
+          hasOAuth2: !!process.env.GOOGLE_REFRESH_TOKEN,
+          hasResend: !!process.env.RESEND_API_KEY,
+          hasUser: !!process.env.SMTP_USER,
+          hasPassword: !!process.env.SMTP_PASSWORD,
+          nodeEnv: process.env.NODE_ENV,
+        })
+        return NextResponse.json(
+          { 
+            error: 'Configuração de email não encontrada. Configure GOOGLE_REFRESH_TOKEN, RESEND_API_KEY ou SMTP_USER/SMTP_PASSWORD.',
+            details: process.env.NODE_ENV === 'development' ? {
+              hasOAuth2: !!process.env.GOOGLE_REFRESH_TOKEN,
+              hasResend: !!process.env.RESEND_API_KEY,
+              hasUser: !!process.env.SMTP_USER,
+              hasPassword: !!process.env.SMTP_PASSWORD,
+            } : undefined
+          },
+          { status: 500 }
+        )
+      }
     }
 
     // Carregar traduções baseado no locale
@@ -146,8 +156,11 @@ export async function POST(request: NextRequest) {
       notInformed: t('notInformed'),
     })))
 
+    // Função helper para enviar email (prioridade: OAuth2 > Resend > SMTP)
+    const sendEmailFunction = useOAuth2 ? sendEmailOAuth2 : (useResend ? sendEmailResend : sendEmail)
+
     // Enviar email principal para você (sempre em português)
-    await sendEmail({
+    await sendEmailFunction({
       to: recipientEmail,
       subject: contactEmailPt.subject,
       html: contactEmailPt.html,
@@ -159,7 +172,7 @@ export async function POST(request: NextRequest) {
     if (sendAutoReply) {
       try {
         const autoReply = getAutoReplyTemplate({ name, email }, translations)
-        await sendEmail({
+        await sendEmailFunction({
           to: email,
           subject: autoReply.subject,
           html: autoReply.html,
