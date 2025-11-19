@@ -35,7 +35,10 @@ const ContactForm = () => {
   const [isSuccess, setIsSuccess] = useState(false)
 
   // API endpoint (backend interno do Next.js)
-  const API_ENDPOINT = '/api/contact'
+  // Usa caminho absoluto para garantir que funcione em produção
+  const API_ENDPOINT = typeof window !== 'undefined' 
+    ? `${window.location.origin}/api/contact`
+    : '/api/contact'
   const projectTypes = (t.raw('projectTypes') as { value: string; label: string }[]) ?? []
   const budgetRanges = (t.raw('budgetRanges') as { value: string; label: string }[]) ?? []
   const timelines = (t.raw('timelines') as { value: string; label: string }[]) ?? []
