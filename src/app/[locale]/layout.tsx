@@ -2,6 +2,9 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
+import { generateMetadata as genMeta } from '@/lib/seo'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -11,6 +14,11 @@ const locales = ['en', 'pt', 'es']
 type Props = {
   readonly children: React.ReactNode
   readonly params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  return genMeta(locale, 'home')
 }
 
 export default async function RootLayout({
@@ -25,10 +33,25 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages({ locale })
+  const { generateStructuredData } = await import('@/lib/seo')
+  const structuredData = generateStructuredData(locale, 'home')
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.organization) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.website) }}
+        />
+      </head>
       <body className={inter.className}>
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>

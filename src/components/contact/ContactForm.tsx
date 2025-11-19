@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   CheckCircleIcon, 
@@ -19,6 +19,7 @@ import {
 
 const ContactForm = () => {
   const t = useTranslations('contact.form')
+  const locale = useLocale()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,7 +34,8 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || ''
+  // API endpoint (backend interno do Next.js)
+  const API_ENDPOINT = '/api/contact'
   const projectTypes = (t.raw('projectTypes') as { value: string; label: string }[]) ?? []
   const budgetRanges = (t.raw('budgetRanges') as { value: string; label: string }[]) ?? []
   const timelines = (t.raw('timelines') as { value: string; label: string }[]) ?? []
@@ -85,36 +87,53 @@ const ContactForm = () => {
     setErrors({})
 
     try {
-      const response = await fetch(FORM_ENDPOINT || '/api/contact', {
+      // Enviar para a API route do Next.js
+      const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company || '',
+          projectType: formData.projectType || '',
+          budget: formData.budget || '',
+          timeline: formData.timeline || '',
+          message: formData.message,
+          locale: locale,
+        }),
       })
 
-      if (response.ok) {
-        setIsSuccess(true)
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          projectType: '',
-          budget: '',
-          timeline: '',
-          message: ''
-        })
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setIsSuccess(false)
-        }, 5000)
-      } else {
-        setErrors({ submit: t('errors.submitFailed') })
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Erro ao enviar mensagem')
       }
+
+      // Sucesso!
+      setIsSuccess(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        projectType: '',
+        budget: '',
+        timeline: '',
+        message: ''
+      })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSuccess(false)
+      }, 5000)
     } catch (error) {
-      setErrors({ submit: t('errors.networkError') })
+      console.error('Erro ao enviar mensagem:', error)
+      setErrors({ 
+        submit: error instanceof Error ? error.message : t('errors.networkError') 
+      })
     } finally {
       setIsSubmitting(false)
     }

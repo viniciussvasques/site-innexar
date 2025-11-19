@@ -10,22 +10,37 @@ import LeadMagnet from '@/components/LeadMagnet'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import { generateMetadata as genMeta, generateStructuredData } from '@/lib/seo'
 
-export default function HomePage() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return genMeta(locale, 'home')
+}
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const structuredData = generateStructuredData(locale, 'home')
+
   return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <Services />
-      <SuccessStories />
-      <ProcessSection />
-      <Technologies />
-      <EngagementModels />
-      <Testimonials />
-      <LeadMagnet />
-      <About />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+      />
+      <main className="min-h-screen">
+        <Header />
+        <Hero />
+        <Services />
+        <SuccessStories />
+        <ProcessSection />
+        <Technologies />
+        <EngagementModels />
+        <Testimonials />
+        <LeadMagnet />
+        <About />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   )
 }

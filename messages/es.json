@@ -1079,6 +1079,47 @@
         "title": "¡Mensaje enviado con éxito!",
         "message": "Hemos recibido tu mensaje y te responderemos en 24 horas."
       }
+    },
+    "email": {
+      "contactSubject": "Nuevo contacto del sitio - {{name}}",
+      "contactHeader": "📧 Nuevo Contacto del Sitio Innexar",
+      "contactInfo": "Información del Contacto",
+      "contactProject": "Detalles del Proyecto",
+      "contactMessage": "Mensaje",
+      "contactFooter": "Este email fue enviado automáticamente a través del formulario de contacto del sitio Innexar.",
+      "autoReplySubject": "Recibimos tu mensaje - Innexar",
+      "autoReplyHeader": "✅ Mensaje Recibido",
+      "autoReplyGreeting": "Hola",
+      "autoReplyThanks": "Gracias por contactar a",
+      "autoReplyReceived": "Hemos recibido tu mensaje y nuestro equipo se pondrá en contacto pronto.",
+      "autoReplyWhile": "Mientras tanto, puedes:",
+      "autoReplyVisit": "Visitar nuestro sitio web",
+      "autoReplyServices": "Conocer nuestros servicios y soluciones",
+      "autoReplyPortfolio": "Ver nuestro portafolio de proyectos",
+      "autoReplySignature": "Atentamente,",
+      "autoReplyTeam": "Equipo Innexar",
+      "autoReplyFooter": "Este es un email automático. Por favor, no respondas este email.",
+      "autoReplyAdvantages": "¿Por Qué Elegir Innexar?",
+      "autoReplyAdvantage1": "Entrega Rápida - 30% Más Rápido",
+      "autoReplyAdvantage2": "Seguridad Empresarial - 99.9% Uptime",
+      "autoReplyAdvantage3": "Equipo Experto - 15+ Años Promedio",
+      "autoReplyAdvantage4": "Enfoque en Innovación - Última Tecnología",
+      "autoReplyAdvantage5": "Soluciones Escalables - Escala 10x",
+      "autoReplyAdvantage6": "Garantía de Calidad - 99.5% Precisión",
+      "autoReplyContactTitle": "Contáctanos",
+      "autoReplyContactEmail": "comercial@innexar.app",
+      "autoReplyContactPhone": "+55 11 5108-5266",
+      "autoReplyContactWebsite": "innexar.app",
+      "labels": {
+        "name": "Nombre",
+        "email": "Correo",
+        "phone": "Teléfono",
+        "company": "Empresa",
+        "type": "Tipo",
+        "budget": "Presupuesto",
+        "timeline": "Plazo"
+      },
+      "notInformed": "No informado"
     }
   },
   "footer": {
@@ -1120,6 +1161,43 @@
         { "label": "Brasil", "display": "+55 11 5108-5266", "href": "+551151085266" }
       ],
       "cta": "Solicitar una propuesta"
+    }
+  },
+  "seo": {
+    "default": {
+      "title": "Innexar - Soluciones Tecnológicas y Desarrollo de Software",
+      "description": "Innexar ofrece soluciones tecnológicas completas, desarrollo de software, infraestructura y consultoría. Transformamos ideas en soluciones digitales poderosas.",
+      "keywords": "desarrollo de software, soluciones tecnológicas, consultoría en TI, desarrollo web, aplicaciones móviles, computación en la nube, infraestructura, Innexar"
+    },
+    "home": {
+      "title": "Innexar - Soluciones Tecnológicas y Desarrollo de Software",
+      "description": "Transforma tus ideas en soluciones digitales poderosas. Desarrollo de software, infraestructura en la nube y consultoría tecnológica de alto nivel.",
+      "keywords": "desarrollo de software, soluciones tecnológicas, consultoría en TI, desarrollo web, aplicaciones móviles"
+    },
+    "about": {
+      "title": "Acerca de Innexar - Nuestra Historia y Misión",
+      "description": "Conoce Innexar, una empresa especializada en soluciones tecnológicas innovadoras. Nuestra misión es transformar ideas en realidad digital.",
+      "keywords": "acerca de Innexar, empresa de tecnología, misión, valores, historia"
+    },
+    "services": {
+      "title": "Servicios - Desarrollo de Software y Soluciones Tecnológicas",
+      "description": "Ofrecemos servicios completos de desarrollo de software, aplicaciones móviles, soluciones en la nube y consultoría tecnológica.",
+      "keywords": "servicios de desarrollo, desarrollo de software, aplicaciones móviles, computación en la nube, consultoría"
+    },
+    "portfolio": {
+      "title": "Portafolio - Proyectos y Soluciones Desarrolladas por Innexar",
+      "description": "Descubre nuestros proyectos y soluciones desarrolladas para clientes de diversos sectores. Casos de éxito en desarrollo de software.",
+      "keywords": "portafolio, proyectos, casos de éxito, desarrollo de software, soluciones tecnológicas"
+    },
+    "contact": {
+      "title": "Contacto - Ponte en Contacto con Innexar",
+      "description": "Contacta al equipo de Innexar. Estamos listos para ayudarte a transformar tus ideas en soluciones digitales.",
+      "keywords": "contacto, presupuesto, consultoría, desarrollo de software"
+    },
+    "saas": {
+      "title": "SaaS - Plataformas de Software como Servicio",
+      "description": "Descubre nuestras plataformas SaaS: Innexar ERP y StructurOne. Soluciones empresariales completas y escalables.",
+      "keywords": "SaaS, software como servicio, ERP, gestión empresarial, plataformas SaaS"
     }
   }
 }

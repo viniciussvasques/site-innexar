@@ -55,7 +55,7 @@
       ],
       "cta": "View StructurOne details"
     }
-  },
+    },
     "feature2": {
       "title": "Automated Provisioning",
       "description": "Instant subdomain creation, database setup, and user account provisioning upon subscription."
@@ -210,9 +210,9 @@
             "Personalized onboarding and training"
           ]
         }
-      ]
-    }
-  },
+        ]
+      }
+    },
     "overview": {
       "title": "Platform Overview",
       "subtitle": "A comprehensive SaaS solution designed for scalability and customization",
@@ -1057,6 +1057,47 @@
         "title": "Message sent successfully!",
         "message": "We've received your message and will get back to you within 24 hours."
       }
+    },
+    "email": {
+      "contactSubject": "New contact from website - {{name}}",
+      "contactHeader": "📧 New Contact from Innexar Website",
+      "contactInfo": "Contact Information",
+      "contactProject": "Project Details",
+      "contactMessage": "Message",
+      "contactFooter": "This email was sent automatically through the Innexar website contact form.",
+      "autoReplySubject": "We received your message - Innexar",
+      "autoReplyHeader": "✅ Message Received",
+      "autoReplyGreeting": "Hello",
+      "autoReplyThanks": "Thank you for contacting",
+      "autoReplyReceived": "We've received your message and our team will get in touch soon.",
+      "autoReplyWhile": "In the meantime, you can:",
+      "autoReplyVisit": "Visit our website",
+      "autoReplyServices": "Learn about our services and solutions",
+      "autoReplyPortfolio": "View our project portfolio",
+      "autoReplySignature": "Best regards,",
+      "autoReplyTeam": "Innexar Team",
+      "autoReplyFooter": "This is an automated email. Please do not reply to this email.",
+      "autoReplyAdvantages": "Why Choose Innexar?",
+      "autoReplyAdvantage1": "Fast Delivery - 30% Faster",
+      "autoReplyAdvantage2": "Enterprise Security - 99.9% Uptime",
+      "autoReplyAdvantage3": "Expert Team - 15+ Years Avg",
+      "autoReplyAdvantage4": "Innovation Focus - Latest Tech",
+      "autoReplyAdvantage5": "Scalable Solutions - 10x Scale",
+      "autoReplyAdvantage6": "Quality Assurance - 99.5% Accuracy",
+      "autoReplyContactTitle": "Get in Touch",
+      "autoReplyContactEmail": "comercial@innexar.app",
+      "autoReplyContactPhone": "+55 11 5108-5266",
+      "autoReplyContactWebsite": "innexar.app",
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "company": "Company",
+        "type": "Type",
+        "budget": "Budget",
+        "timeline": "Timeline"
+      },
+      "notInformed": "Not informed"
     }
   },
   "footer": {
@@ -1098,6 +1139,43 @@
         { "label": "Brazil", "display": "+55 11 5108-5266", "href": "+551151085266" }
       ],
       "cta": "Request a proposal"
+    }
+  },
+  "seo": {
+    "default": {
+      "title": "Innexar - Technology Solutions and Software Development",
+      "description": "Innexar offers complete technology solutions, software development, infrastructure and consulting. We transform ideas into powerful digital solutions.",
+      "keywords": "software development, technology solutions, IT consulting, web development, mobile apps, cloud computing, infrastructure, Innexar"
+    },
+    "home": {
+      "title": "Innexar - Technology Solutions and Software Development",
+      "description": "Transform your ideas into powerful digital solutions. Software development, cloud infrastructure and high-level technology consulting.",
+      "keywords": "software development, technology solutions, IT consulting, web development, mobile apps"
+    },
+    "about": {
+      "title": "About Innexar - Our Story and Mission",
+      "description": "Meet Innexar, a company specialized in innovative technology solutions. Our mission is to transform ideas into digital reality.",
+      "keywords": "about Innexar, technology company, mission, values, history"
+    },
+    "services": {
+      "title": "Services - Software Development and Technology Solutions",
+      "description": "We offer complete software development services, mobile apps, cloud solutions and technology consulting.",
+      "keywords": "development services, software development, mobile apps, cloud computing, consulting"
+    },
+    "portfolio": {
+      "title": "Portfolio - Projects and Solutions Developed by Innexar",
+      "description": "Discover our projects and solutions developed for clients across various industries. Success stories in software development.",
+      "keywords": "portfolio, projects, success stories, software development, technology solutions"
+    },
+    "contact": {
+      "title": "Contact - Get in Touch with Innexar",
+      "description": "Contact the Innexar team. We're ready to help you transform your ideas into digital solutions.",
+      "keywords": "contact, quote, consulting, software development"
+    },
+    "saas": {
+      "title": "SaaS - Software as a Service Platforms",
+      "description": "Discover our SaaS platforms: Innexar ERP and StructurOne. Complete and scalable business solutions.",
+      "keywords": "SaaS, software as a service, ERP, business management, SaaS platforms"
     }
   }
 }
