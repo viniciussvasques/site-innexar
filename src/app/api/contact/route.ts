@@ -22,9 +22,18 @@ export async function POST(request: NextRequest) {
       console.error('Variáveis SMTP não configuradas:', {
         hasUser: !!process.env.SMTP_USER,
         hasPassword: !!process.env.SMTP_PASSWORD,
+        hasHost: !!process.env.SMTP_HOST,
+        hasPort: !!process.env.SMTP_PORT,
+        nodeEnv: process.env.NODE_ENV,
       })
       return NextResponse.json(
-        { error: 'Configuração de email não encontrada. Entre em contato com o suporte.' },
+        { 
+          error: 'Configuração de email não encontrada. Verifique as variáveis de ambiente SMTP no Vercel.',
+          details: process.env.NODE_ENV === 'development' ? {
+            hasUser: !!process.env.SMTP_USER,
+            hasPassword: !!process.env.SMTP_PASSWORD,
+          } : undefined
+        },
         { status: 500 }
       )
     }

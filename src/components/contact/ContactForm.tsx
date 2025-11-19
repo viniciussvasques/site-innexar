@@ -353,7 +353,7 @@ const ContactForm = () => {
               name="timeline"
               value={formData.timeline}
               onChange={handleChange}
-              className="w-full px-4 py-3 pl-11 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
+              className="w-full px-4 py-3 pl-11 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white text-gray-900 appearance-none cursor-pointer"
             >
               <option value="">{t('placeholders.timeline')}</option>
               {timelines.map((time) => (
